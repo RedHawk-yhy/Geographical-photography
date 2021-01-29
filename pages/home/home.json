@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "个人中心",
+  "usingComponents": {
+    "van-image":"/miniprogram_npm/@vant/weapp/image/index"
+  }
+}

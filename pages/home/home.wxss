@@ -1,0 +1,47 @@
+/* pages/home/home.wxss */
+page{
+  padding: 0;
+  margin: 0;
+}
+.underline{
+  text-decoration: underline;
+}
+.userInfo{
+  padding-top: 40rpx;
+  background-color: #38b48b;
+  overflow: hidden;
+  color: white;
+  /* height: 400rpx; */
+}
+.avator{
+  margin-left: 40rpx;
+  float: left;
+}
+.nickName{
+  /* position: relative; */
+  float: left;
+  margin-left: 40rpx;
+  font-size: 36rpx;
+}
+.exits{
+  position: absolute;
+  right: 20rpx;
+  /* top: 10rpx; */
+  font-size: 28rpx;
+}
+.menu{
+  padding-left: 40rpx;
+}
+.autograph{
+  clear: both;
+  padding: 20rpx 30rpx;
+  font-size: 28rpx;
+}
+.setting{
+  float: right;
+  font-size: 30rpx;
+  margin-top: 4rpx;
+}
+.title{
+  box-shadow: black ;
+}

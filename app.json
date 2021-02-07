@@ -4,7 +4,11 @@
     "pages/find/find",
     "pages/home/home",
     "custom-tab-bar/index",
-    "pages/searchPage/searchPage"
+    "pages/searchPage/searchPage",
+    "pages/PhotographySkills/PhotographySkills",
+    "pages/TourismStrategy/TourismStrategy",
+    "pages/awardedWork/awardedWork",
+    "pages/findThings/findThings"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -39,6 +43,8 @@
     "van-tag": "@vant/weapp/tag/index",
     "van-tab": "@vant/weapp/tab/index",
     "van-tabs": "@vant/weapp/tabs/index",
-    "van-search": "@vant/weapp/search/index"
+    "van-search": "@vant/weapp/search/index",
+    "van-grid": "@vant/weapp/grid/index",
+    "van-grid-item": "@vant/weapp/grid-item/index"
   }
 }

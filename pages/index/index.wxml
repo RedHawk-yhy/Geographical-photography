@@ -15,5 +15,11 @@
       </swiper-item>
     </swiper>
   </view>
+  <van-grid square>
+    <van-grid-item icon="photo-o" text="摄影技巧" icon-color="#4b5cc4" url="/pages/PhotographySkills/PhotographySkills" />
+    <van-grid-item icon="orders-o" text="旅游攻略" icon-color="#0eb83a" url="/pages/TourismStrategy/TourismStrategy"/>
+    <van-grid-item icon="medal-o" text="获奖作品" icon-color="#ffb61e" url="/pages/awardedWork/awardedWork"/>
+    <van-grid-item icon="goods-collect-o" text="探索好物" icon-color="#dc3023" url="/pages/findThings/findThings"/>
+  </van-grid>
 </view>
 

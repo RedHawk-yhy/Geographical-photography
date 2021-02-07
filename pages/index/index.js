@@ -7,7 +7,7 @@ Page({
   },
   onCancel:function(){
     console.log('点击了取消按钮');
-  },
+  }, 
   onSearch: function(){
     console.log(this.value);
     wx.navigateTo({

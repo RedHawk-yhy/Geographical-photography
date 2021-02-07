@@ -1,46 +1,13 @@
-// custom-tab-bar/index.js
-Component({
+// pages/awardedWork/awardedWork.js
+Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    active: 0,
-    list:[
-      {
-        "url":"/pages/index/index",
-        "icon":"home-o",
-        "text":"首页"
-      },
-      {
-        "url":"/pages/find/find",
-        "icon":"eye-o",
-        "text":"探索"
-      },
-      {
-        "url":"/pages/home/home",
-        "icon":"contact",
-        "text":"个人中心"
-      }
-    ]
+
   },
-  methods:{
-    onChange(event) {
-      // event.detail 的值为当前选中项的索引
-      this.setData({
-        active: event.detail
-      });
-      wx.switchTab({
-        url: this.data.list[event.detail].url,
-      })
-    },
-    init(){
-      const page = getCurrentPages().pop()
-      this.setData({
-        active:this.data.list.findIndex(item => item.url === `/${page.route}`)
-      })
-    }
-  },
+
   /**
    * 生命周期函数--监听页面加载
    */

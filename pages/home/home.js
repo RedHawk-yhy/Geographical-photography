@@ -7,15 +7,36 @@ Page({
   data: {
     userInfo: null,
     autograph:'这个人很懒，什么都没有留下!',
+    isAutoGraph:false,
+    autographIpt:'',
+    errorMessage:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log();
+    
   },
-
+  editAutograph(){
+    this.setData({
+      isAutoGraph:true,
+      autographIpt:this.data.autograph ? this.data.autograph : ''
+    })
+  },
+  getAutographIptValue(){
+    if(this.data.autographIpt === ''){
+      this.setData({
+        errorMessage:'输入内容不能为空！',
+        isAutoGraph:true
+      })
+    }else{
+      this.setData({
+        autograph:this.data.autographIpt
+      })
+    }
+    
+  },
   getUserInfo() {
     if (!this.data.userInfo) {
       const that = this

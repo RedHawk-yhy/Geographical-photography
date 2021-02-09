@@ -1,14 +1,14 @@
 <!--pages/home/home.wxml-->
 <view class="userInfo">
   <van-image round width="150rpx" height="150rpx" src="{{userInfo.avatarUrl}}" class="avator" />
-  <text bindtap="getUserInfo" class="{{userInfo?'nickName':'underline nickName'}}">
+  <text bindtap="getUserInfo" class="{{userInfo?'nickName':'underline nickName'}}" >
     {{userInfo.nickName?userInfo.nickName:"点击获取个人信息"}}
   </text>
   <view class="exits" bindtap="exits"><van-tag type="danger">{{userInfo?"退出":""}}</van-tag></view>
   <view class="autograph">
     <view>
       {{autograph}}
-      <van-icon name="setting-o" class="setting"/>
+      <van-icon name="edit" class="setting" bindtap="editAutograph"/>
     </view>
   </view>
 </view>
@@ -16,3 +16,19 @@
   <van-tab title="笔记" class="title">笔记笔记笔记笔记</van-tab>
   <van-tab title="收藏" class="title">收藏</van-tab>
 </van-tabs>
+
+<van-dialog
+  use-slot
+  title="个性签名"
+  show="{{ isAutoGraph }}"
+  show-cancel-button
+  bind:confirm="getAutographIptValue"
+>
+  <van-field
+    model:value="{{ autographIpt }}"
+    placeholder="请输入个性签名"
+    clearable="{{ true }}"
+    border="{{ false }}"
+    error-message="{{ errorMessage }}"
+  />
+</van-dialog>

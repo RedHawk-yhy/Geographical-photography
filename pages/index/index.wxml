@@ -9,7 +9,7 @@
   bind:focus="onFocus"
   />
   <view>
-    <swiper autoplay="true" interval="2000" indicator-dots="true">
+    <swiper autoplay="true" interval="3000" style="height:400rpx">
       <swiper-item wx:for="{{banners}}" wx:key="index">
         <image class="banner" src="{{item}}"></image>
       </swiper-item>
@@ -21,5 +21,30 @@
     <van-grid-item icon="medal-o" text="获奖作品" icon-color="#ffb61e" url="/pages/awardedWork/awardedWork"/>
     <van-grid-item icon="goods-collect-o" text="探索好物" icon-color="#dc3023" url="/pages/findThings/findThings"/>
   </van-grid>
+  <van-card
+    desc="描述信息"
+    title="商品标题"
+    thumb="{{ banners[0] }}"
+  />
+  <van-card
+    desc="描述信息"
+    title="商品标题"
+    thumb="{{ banners[1] }}"
+  />
+  <van-card
+    desc="描述信息"
+    title="商品标题"
+    thumb="{{ banners[2] }}"
+  />
+  <van-card
+    desc="描述信息"
+    title="商品标题"
+    thumb="{{ banners[2] }}"
+  />
+  <van-card
+    desc="描述信息"
+    title="商品标题"
+    thumb="{{ banners[2] }}"
+  />
 </view>
 

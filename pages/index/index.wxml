@@ -9,7 +9,7 @@
   bind:focus="onFocus"
   />
   <view>
-    <swiper autoplay="true" interval="3000" style="height:400rpx">
+    <swiper autoplay="true" interval="3000" style="height:440rpx">
       <swiper-item wx:for="{{banners}}" wx:key="index">
         <image class="banner" src="{{item}}"></image>
       </swiper-item>

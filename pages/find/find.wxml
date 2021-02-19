@@ -1,1 +1,7 @@
-<text>find页面</text>
+<brickLayout
+  dataSet="{{dataSet}}"
+  option="{{brick_option}}"
+  bind:tapCard="tapCard"
+  bind:tapLike="tapLike"
+  bind:tapUser="tapUser"
+/>

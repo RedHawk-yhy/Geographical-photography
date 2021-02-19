@@ -1,1 +1,4 @@
-/* pages/find/find.wxss */
+page {
+  background: #f7f7f7;
+  padding-top: 20rpx;
+}

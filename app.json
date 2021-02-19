@@ -22,13 +22,16 @@
     "backgroundColor": "#161823",
     "list": [
       {
-        "pagePath": "pages/index/index"
+        "pagePath": "pages/index/index",
+        "text":"首页"
       },
       {
-        "pagePath": "pages/find/find"
+        "pagePath": "pages/find/find",
+        "text":"探索"
       },
       {
-        "pagePath": "pages/home/home"
+        "pagePath": "pages/home/home",
+        "text":"个人中心"
       }
     ]
   },

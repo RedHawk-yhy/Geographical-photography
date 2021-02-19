@@ -48,3 +48,7 @@
   />
 </view>
 
+
+<!-- 解决tabbar遮挡内容问题 -->
+<view style="height: 150rpx;"></view>
+

@@ -60,6 +60,13 @@ Page({
         liked: false,
         images: ["https://s3.ax1x.com/2021/02/08/yNjwwD.jpg"]
       },
+      {
+        id: '8',
+        content:'这是一张关于地理摄影的图片',
+        backgroundColor: '#ffffff',
+        liked: false,
+        images: ["https://s3.ax1x.com/2021/02/08/yNj0Te.jpg"]
+      },
     ],
     brick_option:{
       defaultExpandStatus: true,

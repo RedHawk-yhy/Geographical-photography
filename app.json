@@ -8,7 +8,8 @@
     "pages/PhotographySkills/PhotographySkills",
     "pages/TourismStrategy/TourismStrategy",
     "pages/awardedWork/awardedWork",
-    "pages/findThings/findThings"
+    "pages/findThings/findThings",
+    "components/card/card"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -23,15 +24,15 @@
     "list": [
       {
         "pagePath": "pages/index/index",
-        "text":"首页"
+        "text": "首页"
       },
       {
         "pagePath": "pages/find/find",
-        "text":"探索"
+        "text": "探索"
       },
       {
         "pagePath": "pages/home/home",
-        "text":"个人中心"
+        "text": "个人中心"
       }
     ]
   },

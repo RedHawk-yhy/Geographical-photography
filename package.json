@@ -10,5 +10,6 @@
   "license": "ISC",
   "dependencies": {
     "@vant/weapp": "^1.6.4",
+    "axios": "^0.21.1"
   }
 }

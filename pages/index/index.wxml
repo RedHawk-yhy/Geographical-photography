@@ -21,31 +21,20 @@
     <van-grid-item icon="medal-o" text="获奖作品" icon-color="#ffb61e" url="/pages/awardedWork/awardedWork"/>
     <van-grid-item icon="goods-collect-o" text="探索好物" icon-color="#dc3023" url="/pages/findThings/findThings"/>
   </van-grid>
-  <van-card
-    desc="描述信息"
-    title="商品标题"
-    thumb="{{ banners[0] }}"
-  />
-  <van-card
-    desc="描述信息"
-    title="商品标题"
-    thumb="{{ banners[1] }}"
-  />
-  <van-card
-    desc="描述信息"
-    title="商品标题"
-    thumb="{{ banners[2] }}"
-  />
-  <van-card
-    desc="描述信息"
-    title="商品标题"
-    thumb="{{ banners[2] }}"
-  />
-  <van-card
-    desc="描述信息"
-    title="商品标题"
-    thumb="{{ banners[2] }}"
-  />
+  <view class="cardList">
+    <view class="card">
+      <image src="https://s3.ax1x.com/2021/02/08/yNjDFH.jpg" mode="widthFix"></image>
+      <text class="content">我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字</text>
+    </view>
+    <view class="card">
+      <image src="https://s3.ax1x.com/2021/02/08/yNjDFH.jpg" mode="widthFix"></image>
+      <text class="content">我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字</text>
+    </view>
+    <view class="card">
+      <image src="https://s3.ax1x.com/2021/02/08/yNjDFH.jpg" mode="widthFix"></image>
+      <text class="content">我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字</text>
+    </view>
+  </view>
 </view>
 
 

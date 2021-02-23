@@ -5,7 +5,16 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    list:[{id:1,image:'https://s3.ax1x.com/2021/02/08/yNjdeO.jpg',title:'我是标题',content:'我是内容我是内容我是内容我是内容'},
+    {id:2,image:'https://s3.ax1x.com/2021/02/08/yNjdeO.jpg',title:'我是标题',content:'我是内容我是内容我是内容我是内容'},
+    {id:3,image:'https://s3.ax1x.com/2021/02/08/yNjdeO.jpg',title:'我是标题',content:'我是内容我是内容我是内容我是内容'},
+    {id:4,image:'https://s3.ax1x.com/2021/02/08/yNjdeO.jpg',title:'我是标题',content:'我是内容我是内容我是内容我是内容'},
+    {id:5,image:'https://s3.ax1x.com/2021/02/08/yNjdeO.jpg',title:'我是标题',content:'我是内容我是内容我是内容我是内容'},
+    {id:6,image:'https://s3.ax1x.com/2021/02/08/yNjdeO.jpg',title:'我是标题',content:'我是内容我是内容我是内容我是内容'},
+    {id:7,image:'https://s3.ax1x.com/2021/02/08/yNjdeO.jpg',title:'我是标题',content:'我是内容我是内容我是内容我是内容'},
+    {id:8,image:'https://s3.ax1x.com/2021/02/08/yNjdeO.jpg',title:'我是标题',content:'我是内容我是内容我是内容我是内容'},
+    {id:9,image:'https://s3.ax1x.com/2021/02/08/yNjdeO.jpg',title:'我是标题',content:'我是内容我是内容我是内容我是内容'},
+    {id:10,image:'https://s3.ax1x.com/2021/02/08/yNjdeO.jpg',title:'我是标题',content:'我是内容我是内容我是内容我是内容'}]
   },
 
   /**

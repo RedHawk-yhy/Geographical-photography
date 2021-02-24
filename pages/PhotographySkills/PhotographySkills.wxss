@@ -25,8 +25,7 @@
 }
 .content{
   font-size: 24rpx;
-  margin: 16rpx 0;
-  height: 60rpx;
+  margin: 10rpx 0;
   display: -webkit-box;
   overflow: hidden;
   text-overflow: ellipsis;

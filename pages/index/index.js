@@ -1,3 +1,5 @@
+const { request } = require('../../utils/request')
+// const axios = require('axios')
 Page({
   data: {
     banners: ["https://s3.ax1x.com/2021/02/08/yNjDFH.jpg", "https://s3.ax1x.com/2021/02/08/yNj0Te.jpg",
@@ -19,17 +21,11 @@ Page({
     console.log(111);
   },
   onLoad: function () {
-    // this.getData()
+    // request('http://net-music.penkuoer.com/banner').then(res => {
+    //   console.log(res);
+    // })
   },
   onShow(){
     this.getTabBar().init()
   },
-  // getData:function () {
-  //   wx.request({
-  //     url: 'http://localhost:8088/data',
-  //     success:(res) => {
-  //       console.log(res.data);
-  //     }
-  //   })
-  // }
 })

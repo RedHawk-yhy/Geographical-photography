@@ -1,11 +1,12 @@
 //app.js
 
 App({
+  //监听小程序初始化
   onLaunch: function () {
-    // 展示本地存储能力
-    // var logs = wx.getStorageSync('logs') || []
-    // logs.unshift(Date.now())
-    // wx.setStorageSync('logs', logs)
-  
+    console.log('小程序初始化完成');
   },
+  globalData:{
+    AppId:'wxd875a0123f0c8d51',
+    AppSecret:'9a81d1b5d2502d498695e0d414d29f93'
+  }
 })

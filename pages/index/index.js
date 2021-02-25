@@ -1,4 +1,5 @@
 const { request } = require('../../utils/request')
+const app = getApp() // 获取App实例，关联app.js 用来获取globalData数据
 // const axios = require('axios')
 Page({
   data: {
@@ -24,6 +25,7 @@ Page({
     // request('http://net-music.penkuoer.com/banner').then(res => {
     //   console.log(res);
     // })
+    console.log(app.globalData);
   },
   onShow(){
     this.getTabBar().init()

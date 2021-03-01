@@ -1,2 +1,13 @@
-<!--components/card/card.wxml-->
-<text>components/card/card.wxml</text>
+
+  <view class="item" >
+    <image class="image" src="{{ image }}" mode="widthFix"></image>
+    <view class="text">
+      <view class="title">{{ title }}</view>
+      <view class="content">{{ content }}</view>
+      <view class="option">
+        <van-button type="default" round size="mini">阅读原文</van-button>
+      </view>
+    </view>
+  </view>
+
+

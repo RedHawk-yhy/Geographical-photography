@@ -38,6 +38,7 @@
   },
   "sitemapLocation": "sitemap.json",
   "usingComponents": {
+    "card":"./components/card/card",
     "van-button": "@vant/weapp/button/index",
     "van-tabbar": "@vant/weapp/tabbar/index",
     "van-tabbar-item": "@vant/weapp/tabbar-item/index",

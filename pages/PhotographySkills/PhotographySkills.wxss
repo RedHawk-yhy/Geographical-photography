@@ -15,6 +15,7 @@
 }
 
 .title{
+  color: #3f37c9;
   display: -webkit-box;
   overflow: hidden;
   text-overflow: ellipsis;

@@ -22,7 +22,7 @@ Page({
   },
   loadDaliyData(){
     const daliyDataList = []
-    request('http://localhost:8088/api/v1/p')
+    request('http://localhost:8088/api/v1/skills')
       .then(res => {
         for(let i = 0; i < 4; i++){
           daliyDataList.push(res.data[Math.floor(Math.random()*res.data.length)])

@@ -13,7 +13,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    request('http://localhost:8088/api/v1/p')
+    request('http://localhost:8088/api/v1/skills')
       .then(res => {
         console.log(res);
         this.setData({

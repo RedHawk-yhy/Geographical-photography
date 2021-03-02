@@ -30,7 +30,7 @@ Page({
    */
   onLoad: function (options) {
     const that = this
-    request('http://localhost:8088/api/v1/p')
+    request('http://localhost:8088/api/v1/skills')
       .then(res => {
         console.log(res.data);
         const dataChange = []

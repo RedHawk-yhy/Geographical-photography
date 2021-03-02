@@ -1,18 +1,25 @@
 // pages/TourismStrategy/TourismStrategy.js
+import { request } from '../../utils/request'
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    list:[]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    request('http://localhost:8088/api/v1/strategy')
+      .then(res => {
+        console.log(res);
+        this.setData({
+          list:res.data
+        })
+      })
   },
 
   /**

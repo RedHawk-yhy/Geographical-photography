@@ -39,9 +39,7 @@
   margin-top: 20rpx;
   font-size: 24rpx;
 }
-.author text:nth-child(1){
-  float: left;
-}
+
 .author text:nth-child(2){
-  float: right;
+  margin-left: 20rpx;
 }

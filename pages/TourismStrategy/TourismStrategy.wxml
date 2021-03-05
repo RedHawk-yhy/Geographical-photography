@@ -15,3 +15,5 @@
   </view>
   <!-- <card wx:for="{{ list }}" wx:key="_id" title="{{ item.title }}" image="{{ item.iamge }}" content="{{ item.content }}"></card> -->
 </view>
+
+<view class="bottomText">没有更多了...</view>

@@ -43,3 +43,10 @@
 .author text:nth-child(2){
   margin-left: 20rpx;
 }
+
+.bottomText{
+  height:100rpx;
+  font-size:30rpx;
+  text-align:center;
+  color: #aaa;
+}

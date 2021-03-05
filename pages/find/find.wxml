@@ -6,7 +6,7 @@
   bind:tapUser="tapUser"
 />
 
-<view class="bottomText" style="">没有更多了</view>
+<view class="bottomText" style="">没有更多了...</view>
 
 <!-- 解决tabbar遮挡内容问题 -->
 <view style="height: 150rpx;"></view>

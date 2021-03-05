@@ -22,10 +22,11 @@ Page({
   },
   loadDaliyData(){
     const daliyDataList = []
-    request('http://localhost:8088/api/v1/skills')
+    request('http://localhost:8088/api/v1/skills',{ page:1,size:100 })
       .then(res => {
+        console.log(res);
         for(let i = 0; i < 4; i++){
-          daliyDataList.push(res.data[Math.floor(Math.random()*res.data.length)])
+          daliyDataList.push(res.data.success[Math.floor(Math.random()*res.data.success.length)])
         }
         this.setData({
           daily:daliyDataList
@@ -33,9 +34,6 @@ Page({
       })
   },
   onLoad: function () {
-    // request('http://net-music.penkuoer.com/banner').then(res => {
-    //   console.log(res);
-    // })
     console.log(app.globalData);
     this.loadDaliyData()
   },

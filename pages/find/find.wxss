@@ -1,5 +1,11 @@
 page {
   background: #f7f7f7;
   padding-top: 20rpx;
-  font-size: 12rpx;
+  /* font-size: 12rpx; */
+}
+.bottomText{
+  height:100rpx;
+  font-size:30rpx;
+  text-align:center;
+  color: #aaa;
 }

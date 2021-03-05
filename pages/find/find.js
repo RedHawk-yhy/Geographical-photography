@@ -1,65 +1,17 @@
 // pages/find/find.js
+import { request } from '../../utils/request'
 Page({
   /**
    * 页面的初始数据
    */
   data: {
-    dataSet:[
-      {
-        id: '1',
-        content:'这是一张关于地理摄影的图片,我的文字比较长，用来测试瀑布流布局',
-        time: 1533106010,
-        user: {
-          username: 'Minya Chan',
-          userId: '1',
-          avatar:'../../utils/userAvatar.png'
-        },
-        liked: false,
-        images: ["https://s3.ax1x.com/2021/02/08/yNjDFH.jpg","https://s3.ax1x.com/2021/02/08/yNjDFH.jpg","https://s3.ax1x.com/2021/02/08/yNjDFH.jpg"]
-      },
-      {
-        id: '2',
-        content:'这是一张关于地理摄影的图片',
-        liked: false,  
-        images: ["https://s3.ax1x.com/2021/02/08/yNjdeO.jpg"]
-      },
-      {
-        id: '3',
-        content:'这是一张关于地理摄影的图片',
-        liked: false,
-        images: ["https://bbs.qn.img-space.com/201804/22/32c4b09dab727ad296e2f940d1c0db06.jpg?imageView2/2/w/300/q/75/ignore-error/1/"]
-      },
-      {
-        id: '4',
-        content:'这是一张关于地理摄影的图片',
-        liked: false,
-        images: ["https://s3.ax1x.com/2021/02/08/yNjwwD.jpg"]
-      },
-      {
-        id: '5',
-        content:'这是一张关于地理摄影的图片',
-        liked: false,
-        images: ["https://s3.ax1x.com/2021/02/08/yNj0Te.jpg"]
-      },
-      {
-        id: '6',
-        content:'这是一张关于地理摄影的图片',
-        liked: false,
-        images: ["https://s3.ax1x.com/2021/02/08/yNjwwD.jpg"]
-      },
-      {
-        id: '7',
-        content:'这是一张关于地理摄影的图片',
-        liked: false,
-        images: ["https://s3.ax1x.com/2021/02/08/yNjwwD.jpg"]
-      },
-      {
-        id: '8',
-        content:'这是一张关于地理摄影的图片',
-        liked: false,
-        images: ["https://s3.ax1x.com/2021/02/08/yNj0Te.jpg"]
-      },
-    ],
+    dataSet:[],
+    page:{  
+      page:1,
+      size: 6
+    },
+    total:0,
+    // 瀑布流插件配置
     brick_option:{
       defaultExpandStatus: true,
       backgroundColor:  '#fff',
@@ -83,16 +35,30 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // const fsData = fs.readFileSync('../../utils/dataList.json',(err) => {
-    //   if(err){
-    //     console.log(err);
-    //   }
-    // })
-    // this.setData({
-    //   dataSet:JSON.parse(fsData)
-    // })
+    this.loadData('http://localhost:8088/api/v1/skills',this.data.page)
   },
-
+  loadData(url,data){
+    const that = this
+    request(url,data)
+      .then(res => {
+        const dataChange = that.data.dataSet
+        res.data.success.forEach(item => {
+          const data = {}
+          const images = []
+          images.push(item.image)
+          data.id = item._id,
+          data.images = images,
+          data.content = item.content,
+          data.author = item.author
+          dataChange.push(data)
+        })
+        that.setData({
+          dataSet:dataChange,
+          total:res.data.pagination.total
+        })
+        // console.log(that.data.dataSet);
+      })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -125,14 +91,22 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    if(this.data.page.page < this.data.total / this.data.page.size){
+      this.setData({
+      page:{
+        page: this.data.page.page + 1,
+        size:6
+      }
+      })
+      this.loadData('http://localhost:8088/api/v1/skills',this.data.page)
+    }
   },
 
   /**

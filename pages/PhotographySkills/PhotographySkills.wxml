@@ -1,2 +1,16 @@
 <!--pages/PhotographySkills/PhotographySkills.wxml-->
-<text>摄影技巧</text>
+<view class="container">
+  <view class="item" wx:for="{{ list }}" wx:key="id">
+    <image src="{{ item.image }}" mode="widthFix"></image>
+    <view class="text">
+      <view class="title">{{ item.title }}</view>
+      <view class="content">{{ item.content }}</view>
+      <view class="option">
+        <van-button type="default" round size="mini">阅读原文</van-button>
+      </view>
+    </view>
+  </view>
+  <!-- <card wx:for="{{ list }}" wx:key="_id" title="{{ item.title }}" image="{{ item.iamge }}" content="{{ item.content }}"></card> -->
+</view>
+
+<view class="bottomText">没有更多了...</view>

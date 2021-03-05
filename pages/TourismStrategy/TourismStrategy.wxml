@@ -1,2 +1,19 @@
-<!--pages/TourismStrategy/TourismStrategy.wxml-->
-<text>旅游攻略</text>
+<!--pages/PhotographySkills/PhotographySkills.wxml-->
+<view class="container">
+  <view class="item" wx:for="{{ list }}" wx:key="id">
+    <image src="{{ item.image }}" mode="widthFix"></image>
+    <view class="text">
+      <view class="title">
+        <a href="#">{{ item.title }}</a>  
+      </view>
+      <view class="content">{{ item.content }}</view>
+      <view class="author">
+        <text>{{ item.author }}</text>
+        <text>{{ item.date }}</text>
+      </view>
+    </view>
+  </view>
+  <!-- <card wx:for="{{ list }}" wx:key="_id" title="{{ item.title }}" image="{{ item.iamge }}" content="{{ item.content }}"></card> -->
+</view>
+
+<view class="bottomText">没有更多了...</view>

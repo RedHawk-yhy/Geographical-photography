@@ -15,7 +15,7 @@ Component({
       {
         "url":"/pages/find/find",
         "icon":"eye-o",
-        "text":"探索"
+        "text":"发现"
       },
       {
         "url":"/pages/home/home",

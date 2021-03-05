@@ -25,13 +25,29 @@ Page({
     request('http://localhost:8088/api/v1/skills',{ page:1,size:100 })
       .then(res => {
         console.log(res);
+        let countNums = []
         for(let i = 0; i < 4; i++){
-          daliyDataList.push(res.data.success[Math.floor(Math.random()*res.data.success.length)])
+          const num = Math.floor(Math.random()*res.data.success.length)
+          countNums.push(num)
+          if(countNums.includes(num)){
+            daliyDataList.push(res.data.success[num])
+          }else{
+            i--
+          }
         }
         this.setData({
           daily:daliyDataList
         })
       })
+  },
+  picView(e){
+    const url = e.target.dataset.url
+    const previewImageArr = [];
+    previewImageArr.push(url)
+    wx.previewImage({
+      current:url,
+      urls: previewImageArr,
+    })
   },
   onLoad: function () {
     console.log(app.globalData);

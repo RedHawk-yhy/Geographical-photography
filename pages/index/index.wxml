@@ -29,8 +29,8 @@
   </van-divider>
   <view class="cardList">
     <view class="card" wx:for="{{ daily }}" wx:key="index">
-      <image src="{{ item.image }}" mode="widthFix"></image>
-      <text class="content">{{ item.content }}</text>
+      <image src="{{ item.image }}" mode="widthFix" data-url="{{ item.image }}" bindtap="picView"></image>
+      <!-- <text class="content">{{ item.content }}</text> -->
     </view>
   </view>
 </view>

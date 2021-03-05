@@ -6,6 +6,12 @@ Page({
    */
   data: {
     dataSet:[],
+    page:{  
+      page:1,
+      size: 6
+    },
+    total:0,
+    // 瀑布流插件配置
     brick_option:{
       defaultExpandStatus: true,
       backgroundColor:  '#fff',
@@ -29,12 +35,14 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.loadData('http://localhost:8088/api/v1/skills',this.data.page)
+  },
+  loadData(url,data){
     const that = this
-    request('http://localhost:8088/api/v1/skills')
+    request(url,data)
       .then(res => {
-        console.log(res.data);
-        const dataChange = []
-        res.data.forEach(item => {
+        const dataChange = that.data.dataSet
+        res.data.success.forEach(item => {
           const data = {}
           const images = []
           images.push(item.image)
@@ -45,11 +53,12 @@ Page({
           dataChange.push(data)
         })
         that.setData({
-          dataSet:dataChange
+          dataSet:dataChange,
+          total:res.data.pagination.total
         })
+        // console.log(that.data.dataSet);
       })
   },
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -82,14 +91,22 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    if(this.data.page.page < this.data.total / this.data.page.size){
+      this.setData({
+      page:{
+        page: this.data.page.page + 1,
+        size:6
+      }
+      })
+      this.loadData('http://localhost:8088/api/v1/skills',this.data.page)
+    }
   },
 
   /**

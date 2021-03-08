@@ -22,7 +22,7 @@ Page({
   },
   loadDaliyData(){
     const daliyDataList = []
-    request('http://localhost:8088/api/v1/skills',{ page:1,size:100 })
+    request('http://localhost:8088/api/v1/strategy',{ page:1,size:100 })
       .then(res => {
         console.log(res);
         let countNums = []

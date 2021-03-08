@@ -8,7 +8,7 @@ Page({
     dataSet:[],
     page:{  
       page:1,
-      size: 6
+      size: 8
     },
     total:0,
     // 瀑布流插件配置
@@ -35,7 +35,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.loadData('http://localhost:8088/api/v1/skills',this.data.page)
+    this.loadData('http://localhost:8088/api/v1/find',this.data.page)
   },
   loadData(url,data){
     const that = this
@@ -43,12 +43,14 @@ Page({
       .then(res => {
         const dataChange = that.data.dataSet
         res.data.success.forEach(item => {
+          console.log(res.data.success);
           const data = {}
           const images = []
           images.push(item.image)
           data.id = item._id,
           data.images = images,
-          data.content = item.content,
+          // data.title = item.title
+          data.content = item.title,
           data.author = item.author
           dataChange.push(data)
         })
@@ -105,7 +107,7 @@ Page({
         size:6
       }
       })
-      this.loadData('http://localhost:8088/api/v1/skills',this.data.page)
+      this.loadData('http://localhost:8088/api/v1/find',this.data.page)
     }
   },
 

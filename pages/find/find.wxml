@@ -1,5 +1,5 @@
 <brickLayout
-  dataSet="{{dataSet}}"
+  dataSet="{{ dataSet }}"
   option="{{brick_option}}"
   bind:tapCard="tapCard"
   bind:tapLike="tapLike"

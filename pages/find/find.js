@@ -43,7 +43,6 @@ Page({
       .then(res => {
         const dataChange = that.data.dataSet
         res.data.success.forEach(item => {
-          console.log(res.data.success);
           const data = {}
           const images = []
           images.push(item.image)

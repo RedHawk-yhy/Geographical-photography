@@ -27,6 +27,7 @@
   >
     每日推荐
   </van-divider>
+  
   <view class="cardList animated fadeInUp">
     <view class="card" wx:for="{{ daily }}" wx:key="index">
       <image src="{{ item.image }}" mode="widthFix" data-url="{{ item.image }}" bindtap="picView"></image>

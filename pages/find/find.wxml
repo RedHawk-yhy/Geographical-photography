@@ -1,11 +1,14 @@
-<view class="animated fadeInRight">
-  <brickLayout
-    dataSet="{{ dataSet }}"
-    option="{{brick_option}}"
-    bind:tapCard="tapCard"
-    bind:tapLike="tapLike"
-    bind:tapUser="tapUser"
-  />
+<view>
+  <view class="animated fadeInRight">
+    <brickLayout
+      dataSet="{{ dataSet }}"
+      option="{{brick_option}}"
+      bind:tapCard="tapCard"
+      bind:tapLike="tapLike"
+      bind:tapUser="tapUser"
+    />
+  </view>
+  <!-- <view wx:if="{{ loading }}" class="loading"><van-loading color="#1989fa" vertical>加载中...</van-loading></view> -->
 </view>
 
 

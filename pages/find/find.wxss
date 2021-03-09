@@ -1,5 +1,5 @@
 page {
-  background: #f7f7f7;
+  background: #f8f8f8;
   padding-top: 20rpx;
   /* font-size: 12rpx; */
 }
@@ -8,4 +8,8 @@ page {
   font-size:30rpx;
   text-align:center;
   color: #aaa;
+}
+.loading{
+  width: 100%;
+  text-align: center;
 }

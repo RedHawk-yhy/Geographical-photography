@@ -11,6 +11,8 @@ Page({
       size: 8
     },
     total:0,
+    //  加载状态
+    loading:true,
     // 瀑布流插件配置
     brick_option:{
       defaultExpandStatus: true,
@@ -23,7 +25,8 @@ Page({
         default:'https://s3.ax1x.com/2021/02/19/yf0Xm8.png'
       },
       fontColor:'#000'
-    }
+    },
+    
   },
   tapCard:function(event){
     console.log(event.detail);
@@ -38,6 +41,7 @@ Page({
     this.loadData('http://localhost:8088/api/v1/find',this.data.page)
   },
   loadData(url,data){
+    this.data.loading = true
     const that = this
     request(url,data)
       .then(res => {
@@ -53,10 +57,12 @@ Page({
           data.author = item.author
           dataChange.push(data)
         })
+       
         that.setData({
           dataSet:dataChange,
           total:res.data.pagination.total
         })
+        that.data.loading = false
         // console.log(that.data.dataSet);
       })
   },

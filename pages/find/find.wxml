@@ -1,10 +1,13 @@
-<brickLayout
-  dataSet="{{ dataSet }}"
-  option="{{brick_option}}"
-  bind:tapCard="tapCard"
-  bind:tapLike="tapLike"
-  bind:tapUser="tapUser"
-/>
+<view class="animated fadeInRight">
+  <brickLayout
+    dataSet="{{ dataSet }}"
+    option="{{brick_option}}"
+    bind:tapCard="tapCard"
+    bind:tapLike="tapLike"
+    bind:tapUser="tapUser"
+  />
+</view>
+
 
 <view class="bottomText" style="">没有更多了...</view>
 

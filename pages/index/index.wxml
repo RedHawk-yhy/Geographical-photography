@@ -27,14 +27,13 @@
   >
     每日推荐
   </van-divider>
-  <view class="cardList">
+  <view class="cardList animated fadeInUpBig">
     <view class="card" wx:for="{{ daily }}" wx:key="index">
       <image src="{{ item.image }}" mode="widthFix" data-url="{{ item.image }}" bindtap="picView"></image>
       <!-- <text class="content">{{ item.content }}</text> -->
     </view>
   </view>
 </view>
-
 
 <!-- 解决tabbar遮挡内容问题 -->
 <view style="height: 170rpx;"></view>

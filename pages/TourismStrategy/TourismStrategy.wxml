@@ -1,6 +1,6 @@
 <!--pages/PhotographySkills/PhotographySkills.wxml-->
 <view class="container">
-  <view class="item" wx:for="{{ list }}" wx:key="id">
+  <view class="item animated fadeInLeftBig" wx:for="{{ list }}" wx:key="id">
     <image src="{{ item.image }}" mode="widthFix"></image>
     <view class="text">
       <view class="title">

@@ -1,18 +1,32 @@
 // pages/searchPage/searchPage.js
+const { request } = require('../../utils/request')
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    list:[],
+    activeNames: ['1'],
+  },
+  onChange(event) {
+    console.log(event);
+    this.setData({
+      activeNames: event.detail,
+    });
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    const { value } = options
+    request('http://localhost:8088/api/v1/search',{ name: value })
+      .then(res => {
+        this.setData({
+          list:res.data.success
+        })
+      })
   },
 
   /**

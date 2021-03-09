@@ -12,9 +12,9 @@ Page({
   onCancel:function(){
     console.log('点击了取消按钮');
   }, 
-  onSearch: function(){
+  onSearch: function(e){
     wx.navigateTo({
-      url: '../searchPage/searchPage',
+      url: `../searchPage/searchPage?value=${e.detail}`,
     })
   },
   onFocus: function(){

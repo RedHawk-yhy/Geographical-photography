@@ -1,1 +1,10 @@
 /* pages/searchPage/searchPage.wxss */
+.noData{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.noDataTxt{
+  color: rgb(186, 224, 255);
+}

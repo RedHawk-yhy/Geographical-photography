@@ -1,7 +1,12 @@
 <!--pages/searchPage/searchPage.wxml-->
-<van-collapse accordion value="{{ activeNames }}" bind:change="onChange">
+<van-collapse wx:if="{{ list }}" accordion value="{{ activeNames }}" bind:change="onChange">
   <van-collapse-item wx:for="{{ list }}" title="{{ item.title }}" name="{{ item._id }}" wx:key="_id">
     <image src="{{ item.image }}" mode="widthFix"></image>
     <view>{{ item.content }}</view>
   </van-collapse-item>
 </van-collapse>
+
+<view wx:else class="noData" class="noData">
+  <image src="../../utils/nodata.png" mode="widthFix"></image>
+  <text class="noDataTxt">没有您想要的数据...</text>
+</view>

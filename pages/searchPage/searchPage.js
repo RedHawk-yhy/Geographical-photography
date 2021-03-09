@@ -7,7 +7,7 @@ Page({
    */
   data: {
     list:[],
-    activeNames: ['1'],
+    activeNames: [],
   },
   onChange(event) {
     console.log(event);

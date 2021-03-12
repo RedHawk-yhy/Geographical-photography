@@ -1,0 +1,6 @@
+<!--pages/detail/detail.wxml-->
+<view class="container">
+  <image src="{{ value.image }}" mode="widthFix"></image>
+  <view class="title">{{ value.title }}</view>
+  <view class="content">{{ value.content }}</view>
+</view>

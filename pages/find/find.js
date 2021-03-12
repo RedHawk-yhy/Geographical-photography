@@ -29,10 +29,13 @@ Page({
     
   },
   tapCard:function(event){
-    console.log(event.detail);
+    console.log('tapCard',event.detail);
+    wx.navigateTo({
+      url: `../detail/detail?id=${event.detail.card_id}`,
+    })
   },
   tapLike:function(event){
-    console.log(event.detail);
+    console.log('tapLike',event.detail);
   },
   /**
    * 生命周期函数--监听页面加载
@@ -52,6 +55,8 @@ Page({
           images.push(item.image)
           data.id = item._id,
           data.images = images,
+          // data.likedCount = 0,
+          // data.like = false
           // data.title = item.title
           data.content = item.title,
           data.author = item.author

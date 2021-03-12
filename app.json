@@ -9,7 +9,8 @@
     "pages/TourismStrategy/TourismStrategy",
     "pages/awardedWork/awardedWork",
     "pages/findThings/findThings",
-    "components/card/card"
+    "components/card/card",
+    "pages/detail/detail"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -38,7 +39,7 @@
   },
   "sitemapLocation": "sitemap.json",
   "usingComponents": {
-    "card":"./components/card/card",
+    "card": "./components/card/card",
     "van-button": "@vant/weapp/button/index",
     "van-tabbar": "@vant/weapp/tabbar/index",
     "van-tabbar-item": "@vant/weapp/tabbar-item/index",

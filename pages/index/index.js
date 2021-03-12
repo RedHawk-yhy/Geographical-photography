@@ -26,13 +26,11 @@ Page({
       .then(res => {
         console.log(res);
         let countNums = []
-        for(let i = 0; i < 4; i++){
+        while(daliyDataList.length < 4){
           const num = Math.floor(Math.random()*res.data.success.length)
-          countNums.push(num)
-          if(countNums.includes(num)){
+          if(countNums.indexOf(num) === -1){
+            countNums.push(num)
             daliyDataList.push(res.data.success[num])
-          }else{
-            i--
           }
         }
         this.setData({

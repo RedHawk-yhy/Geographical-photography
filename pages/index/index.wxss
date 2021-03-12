@@ -34,6 +34,15 @@
   z-index: 999;
   padding-left: 30rpx;
 }
+.searchTagWrap{
+  margin-top: 10rpx;
+}
+.searchTag{
+  margin-bottom: 20rpx;
+}
+.tagWrap{
+  margin-top: 30rpx;
+}
 .tag{
-  margin: 10rpx;
+  margin:10rpx;
 }

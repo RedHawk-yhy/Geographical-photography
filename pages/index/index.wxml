@@ -9,8 +9,12 @@
   bind:focus="onFocus"
   />
   <view class="searchText" wx:if="{{ isSearch }}">
-    <view class="searchTag">搜索记录</view>
-    <van-tag class="tag" color="#ffe1e1" text-color="#ad0000" wx:for="{{ searchList }}" wx:key="index">{{ item }}</van-tag>
+    <view class="searchTagWrap">
+      <van-tag color="#ccc" class="searchTag">搜索记录</van-tag>
+    </view>
+    <view class="tagWrap">
+      <van-tag class="tag" color="#ffe1e1" text-color="#ad0000" wx:for="{{ searchList }}" data-txt="{{ item }}" wx:key="index" bindtap="searchByTag">{{ item }}</van-tag>
+    </view>
   </view>
   <view>
     <swiper autoplay="true" interval="3000" style="height:440rpx">

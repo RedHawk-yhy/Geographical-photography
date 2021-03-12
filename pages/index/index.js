@@ -44,10 +44,15 @@ Page({
     } catch (e) {
       console.log(e);
     }
-    // wx.navigateTo({
-    //   url: `../searchPage/searchPage?value=${e.detail}`,
-    // })
-   
+    wx.navigateTo({
+      url: `../searchPage/searchPage?value=${e.detail}`,
+    })
+  
+  },
+  searchByTag(e){
+    wx.navigateTo({
+      url: `../searchPage/searchPage?value=${e.target.dataset.txt}`,
+    })
   },
   onFocus: function(){
     this.setData({

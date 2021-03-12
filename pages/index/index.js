@@ -7,18 +7,62 @@ Page({
       "https://s3.ax1x.com/2021/02/08/yNjwwD.jpg", "https://s3.ax1x.com/2021/02/08/yNjdeO.jpg"
     ],
     value:'',
-    daily:[]
+    daily:[],
+    isSearch:false,
+    searchList:[]
   },
   onCancel:function(){
-    console.log('点击了取消按钮');
+    this.setData({
+      isSearch:false
+    })
   }, 
   onSearch: function(e){
-    wx.navigateTo({
-      url: `../searchPage/searchPage?value=${e.detail}`,
-    })
+    try {
+      var value = wx.getStorageSync('searchList')
+      if (value) {
+        if(value.indexOf(e.detail) === -1){
+          value.push(e.detail)
+          wx.setStorage({
+            data: value,
+            key: 'searchList',
+          })
+          this.setData({
+            searchList:value
+          })
+        }
+      }else{
+        const arr = []
+        arr.push(e.detail)
+        this.setData({
+          searchList:arr
+        })
+        wx.setStorage({
+          key: 'searchList',
+          data: this.data.searchList
+        })
+      }
+    } catch (e) {
+      console.log(e);
+    }
+    // wx.navigateTo({
+    //   url: `../searchPage/searchPage?value=${e.detail}`,
+    // })
+   
   },
   onFocus: function(){
-    console.log(111);
+    this.setData({
+      isSearch:true
+    })
+    const that = this
+    wx.getStorage({
+      key: 'searchList',
+      success(res){
+        console.log(res.data);
+        that.setData({
+          searchList:res.data
+        })
+      }
+    })
   },
   loadDaliyData(){
     const daliyDataList = []
@@ -53,5 +97,8 @@ Page({
   },
   onShow(){
     this.getTabBar().init()
+    this.setData({
+      isSearch:false
+    })
   },
 })

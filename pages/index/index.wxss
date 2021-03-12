@@ -25,3 +25,15 @@
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
 }
+.searchText{
+  background: rgb(255, 255, 255);
+  width: 750rpx;
+  height:500rpx;
+  position: absolute;
+  top: 90rpx;
+  z-index: 999;
+  padding-left: 30rpx;
+}
+.tag{
+  margin: 10rpx;
+}

@@ -8,6 +8,10 @@
   bind:cancel="onCancel"
   bind:focus="onFocus"
   />
+  <view class="searchText" wx:if="{{ isSearch }}">
+    <view class="searchTag">搜索记录</view>
+    <van-tag class="tag" color="#ffe1e1" text-color="#ad0000" wx:for="{{ searchList }}" wx:key="index">{{ item }}</van-tag>
+  </view>
   <view>
     <swiper autoplay="true" interval="3000" style="height:440rpx">
       <swiper-item wx:for="{{ banners }}" wx:key="index">

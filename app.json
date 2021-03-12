@@ -57,7 +57,8 @@
     "van-divider": "@vant/weapp/divider/index",
     "van-collapse": "@vant/weapp/collapse/index",
     "van-collapse-item": "@vant/weapp/collapse-item/index",
-    "van-loading": "@vant/weapp/loading/index"
+    "van-loading": "@vant/weapp/loading/index",
+    "van-toast": "@vant/weapp/toast/index"
   },
   "plugins": {
     "brickLayout": {

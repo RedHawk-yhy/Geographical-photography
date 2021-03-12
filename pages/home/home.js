@@ -1,4 +1,5 @@
 // pages/home/home.js
+const { request } = require('../../utils/request')
 Page({
 
   /**
@@ -6,7 +7,7 @@ Page({
    */
   data: {
     userInfo: null,
-    autograph:'这个人很懒，什么都没有留下!',
+    autograph:'请先登录哟',
     isAutoGraph:false,
     autographIpt:'',
     errorMessage:''
@@ -16,7 +17,14 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    const that = this
+    wx.getSetting({
+      success(res){
+        if(res.authSetting['scope.userInfo']){
+          that.getUserInfo()
+        }
+      }
+    })
   },
   editAutograph(){
     this.setData({
@@ -31,12 +39,23 @@ Page({
         isAutoGraph:true
       })
     }else{
+      request(`http://localhost:8088/api/v1/user/updateMark?nickName=${ this.data.userInfo.nickName }`,{ autograph:this.data.autographIpt },'POST').then(res => {
+        console.log(res);
+        if(res.data.code === 1){
+          wx.showToast({
+            title: res.data.msg,
+            icon: 'success',
+            duration: 2000
+          })
+        }
+      })
       this.setData({
         autograph:this.data.autographIpt
       })
     }
     
   },
+  //  获取用户信息方法
   getUserInfo() {
     if (!this.data.userInfo) {
       const that = this
@@ -51,6 +70,22 @@ Page({
                   // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
                   wx.getUserInfo({
                     success: res => {
+                      request('http://localhost:8088/api/v1/user').then((result) => {
+                        const thisUser = result.data.find(item => res.userInfo.nickName === item.nickName)
+                        that.setData({
+                          autograph:thisUser.autograph
+                        })
+                        const arr = []
+                        result.data.forEach(item =>{
+                          arr.push(item.nickName)
+                        })
+                        if(arr.indexOf(res.userInfo.nickName) === -1){
+                          request('http://localhost:8088/api/v1/user',{ nickName:res.userInfo.nickName,autograph:that.data.autograph },'POST')
+                          .then(val => {
+                            console.log(val);
+                          })
+                        }
+                      })
                       that.setData({
                         userInfo: res.userInfo
                       })
@@ -65,6 +100,7 @@ Page({
       })
     }
   },
+  //  退出方法
   exits() {
     const that = this
     wx.showModal({
@@ -72,7 +108,8 @@ Page({
       success(res) {
         if (res.confirm) {
           that.setData({
-            userInfo: null
+            userInfo: null,
+            autograph:'请先登录哟！'
           })
         }
       }

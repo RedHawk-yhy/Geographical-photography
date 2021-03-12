@@ -8,7 +8,7 @@
   <view class="autograph">
     <view>
       {{autograph}}
-      <van-icon name="edit" class="setting" bindtap="editAutograph"/>
+      <van-icon name="edit" class="setting" bindtap="editAutograph" wx:if="{{ userInfo }}"/>
     </view>
   </view>
 </view>

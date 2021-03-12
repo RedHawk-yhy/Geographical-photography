@@ -1,5 +1,7 @@
 {
-  "navigationBarTitleText": "个人中心",
+  "navigationBarTitleText": "",
+  "navigationBarBackgroundColor": "#38b48b",
+  "navigationBarTextStyle": "white",
   "usingComponents": {
     "van-image":"/miniprogram_npm/@vant/weapp/image/index"
   }

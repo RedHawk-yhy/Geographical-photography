@@ -1,6 +1,7 @@
 const { request } = require('../../utils/request')
 const app = getApp() // 获取App实例，关联app.js 用来获取globalData数据
 // const axios = require('axios')
+import Dialog from '../../miniprogram_npm/@vant/weapp/dialog/dialog'
 Page({
   data: {
     banners: ["https://s3.ax1x.com/2021/02/08/yNjDFH.jpg", "https://s3.ax1x.com/2021/02/08/yNj0Te.jpg",
@@ -62,7 +63,6 @@ Page({
     wx.getStorage({
       key: 'searchList',
       success(res){
-        console.log(res.data);
         that.setData({
           searchList:res.data
         })
@@ -86,6 +86,21 @@ Page({
           daily:daliyDataList
         })
       })
+  },
+  delMarks(){
+    const that = this
+    Dialog.confirm({
+      // title: '标题',
+      message: '您确定要清空搜索记录么？',
+    }).then(()=>{
+      that.setData({
+        searchList:[]
+      })
+      wx.setStorage({
+        data: that.data.searchList,
+        key: 'searchList',
+      })
+    })
   },
   picView(e){
     const url = e.target.dataset.url

@@ -11,13 +11,15 @@
   <view class="searchText" wx:if="{{ isSearch }}">
     <view class="searchTagWrap">
       <van-tag color="#ccc" class="searchTag">搜索记录</van-tag>
+      <image class="delImage" src="/utils/delete.png" bindtap="delMarks" mode="widthFix"></image>
     </view>
     <view class="tagWrap">
       <van-tag class="tag" color="#ffe1e1" text-color="#ad0000" wx:for="{{ searchList }}" data-txt="{{ item }}" wx:key="index" bindtap="searchByTag">{{ item }}</van-tag>
     </view>
   </view>
+  <van-dialog id="van-dialog" />
   <view>
-    <swiper autoplay="true" interval="3000" style="height:440rpx">
+    <swiper autoplay="true" interval="3000" style="height:440rpx" indicator-dots="true" indicator-color="rgba(200, 200, 200, .5)" indicator-active-color="rgba(0,0,0,.5)">
       <swiper-item wx:for="{{ banners }}" wx:key="index">
         <image class="banner" src="{{ item }}"></image>
       </swiper-item>

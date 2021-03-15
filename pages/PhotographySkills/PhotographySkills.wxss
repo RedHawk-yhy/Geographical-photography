@@ -42,3 +42,9 @@
   text-align:center;
   color: #aaa;
 }
+.option .star{
+  width: 30rpx;
+  position: absolute;
+  right: 24rpx;
+  bottom: 28rpx;
+}

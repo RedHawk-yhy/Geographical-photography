@@ -11,11 +11,17 @@ Page({
       page:1,
       size:8,
     },
-    total:0
+    total:0,
+    imageUrl:true
   },
   handleDetail(e){
     wx.navigateTo({
       url: `../skillsDetail/skillsDetail?id=${ e.target.dataset.id }`,
+    })
+  },
+  starToggle(){
+    this.setData({
+      imageUrl:!this.data.imageUrl
     })
   },
   /**

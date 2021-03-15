@@ -7,7 +7,7 @@
       <view class="content">{{ item.content }}</view>
       <view class="option">
         <van-button type="default" round size="mini" bindtap="handleDetail" data-id="{{ item._id }}">阅读原文</van-button>
-        <image bindtap="starToggle" class="star" mode="widthFix" src="{{ imageUrl===true ? 'https://s3.ax1x.com/2021/02/19/yf0j0S.png' : 'https://s3.ax1x.com/2021/02/19/yf0Xm8.png' }}"></image>
+        <van-icon class="star" name="star" />
       </view>
     </view>
   </view>

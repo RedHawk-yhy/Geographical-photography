@@ -6,7 +6,7 @@
       <view class="title">{{ item.title }}</view>
       <view class="content">{{ item.content }}</view>
       <view class="option">
-        <van-button type="default" round size="mini">阅读原文</van-button>
+        <van-button type="default" round size="mini" bindtap="handleDetail" data-id="{{ item._id }}">阅读原文</van-button>
       </view>
     </view>
   </view>

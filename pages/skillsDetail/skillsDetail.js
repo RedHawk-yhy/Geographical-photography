@@ -1,4 +1,4 @@
-// pages/detail/detail.js
+// pages/skillsDetail/skillsDetail.js
 const { request } = require('../../utils/request')
 
 Page({
@@ -7,14 +7,15 @@ Page({
    * 页面的初始数据
    */
   data: {
-    value:{}
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    request(`http://localhost:8088/api/v1/find/${options.id}`)
+    const _id = options.id
+    request(`http://localhost:8088/api/v1/skills/${_id}`)
       .then(res => {
         console.log(res);
         this.setData({

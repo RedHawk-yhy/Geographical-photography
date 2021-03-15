@@ -10,7 +10,8 @@
     "pages/awardedWork/awardedWork",
     "pages/findThings/findThings",
     "components/card/card",
-    "pages/detail/detail"
+    "pages/detail/detail",
+    "pages/skillsDetail/skillsDetail"
   ],
   "window": {
     "backgroundTextStyle": "light",

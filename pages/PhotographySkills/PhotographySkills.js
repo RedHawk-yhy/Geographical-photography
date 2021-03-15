@@ -13,7 +13,11 @@ Page({
     },
     total:0
   },
-
+  handleDetail(e){
+    wx.navigateTo({
+      url: `../skillsDetail/skillsDetail?id=${ e.target.dataset.id }`,
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */

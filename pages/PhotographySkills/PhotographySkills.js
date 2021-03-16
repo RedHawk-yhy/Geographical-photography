@@ -12,6 +12,7 @@ Page({
       size:8,
     },
     total:0,
+    ischeck:'1'
   },
   handleDetail(e){
     wx.navigateTo({
@@ -23,14 +24,29 @@ Page({
    */
   onLoad: function (options) {
     this.loadData('http://localhost:8088/api/v1/skills',this.data.pagination)
+    console.log(options);
   },
   loadData(url,data){
     request(url,data)
       .then(res => {
         const listMiddle = this.data.list
-        res.data.success.forEach(item => {
-          listMiddle.push(item)
-        })
+        const stars = wx.getStorageSync('stars')
+        let arr = []
+        if(stars){
+          stars.forEach(item => {
+            arr.push(item._id)
+          })
+        }
+        for(let i = 0 ; i < res.data.success.length ; i++){
+          for(let j = 0 ;j < arr.length ; j++){
+            if(arr.indexOf(res.data.success[i]._id) > -1){
+              res.data.success[i].checked = true
+            }else{
+              res.data.success[i].checked = false
+            }
+          }
+          listMiddle.push(res.data.success[i])
+        }
         this.setData({
           list:listMiddle,
           total:res.data.pagination.total
@@ -48,7 +64,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    
   },
 
   /**

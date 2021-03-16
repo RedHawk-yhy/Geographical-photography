@@ -45,3 +45,56 @@ page{
 .title{
   box-shadow: black ;
 }
+
+.container{
+  padding: 20rpx;
+}
+
+.item{
+  overflow: hidden;
+  margin: 20rpx 0;
+}
+
+.item image{
+  float: left;
+  width: 40%;
+  margin-right: 10rpx;
+}
+
+.title{
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  white-space: normal !important;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+.content{
+  font-weight: 400;
+  font-size: 24rpx;
+  margin: 20rpx 0;
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  white-space: normal !important;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.bottomText{
+  height:100rpx;
+  font-size:30rpx;
+  text-align:center;
+  color: #aaa;
+}
+.option .star{
+  width: 30rpx;
+  position: absolute;
+  right: 24rpx;
+  bottom: 28rpx;
+}
+.delTag{
+  float: right;
+}

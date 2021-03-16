@@ -1,5 +1,6 @@
 // pages/home/home.js
 const { request } = require('../../utils/request')
+import Dialog from '../../miniprogram_npm/@vant/weapp/dialog/dialog'
 Page({
 
   /**
@@ -10,7 +11,8 @@ Page({
     autograph:'请先登录哟',
     isAutoGraph:false,
     autographIpt:'',
-    errorMessage:''
+    errorMessage:'',
+    starsList:[]
   },
 
   /**
@@ -79,6 +81,7 @@ Page({
                         result.data.forEach(item =>{
                           arr.push(item.nickName)
                         })
+                        that.getStars()
                         if(arr.indexOf(res.userInfo.nickName) === -1){
                           request('http://localhost:8088/api/v1/user',{ nickName:res.userInfo.nickName,autograph:that.data.autograph },'POST')
                           .then(val => {
@@ -89,7 +92,6 @@ Page({
                       that.setData({
                         userInfo: res.userInfo
                       })
-                      console.log(that.data.userInfo);
                     }
                   })
                 }
@@ -109,10 +111,34 @@ Page({
         if (res.confirm) {
           that.setData({
             userInfo: null,
-            autograph:'请先登录哟！'
+            autograph:'请先登录哟！',
+            starsList:[]
           })
         }
       }
+    })
+  },
+  getStars(){
+    const dataList = wx.getStorageSync('stars')
+    this.setData({
+      starsList:dataList
+    })
+  },
+  handleDel(e){
+    
+    Dialog.confirm({
+      // title: '标题',
+      message: '您确定要取消收藏么？',
+    }).then(()=>{
+      const stars = wx.getStorageSync('stars')
+      const index = stars.findIndex(item => item._id === e.target.dataset.id)
+      stars.splice(index,1)
+      wx.setStorageSync('stars', stars)
+      this.setData({
+        starsList:stars
+      })
+    }).catch(()=>{
+      
     })
   },
   /**
@@ -126,6 +152,12 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    if(this.data.userInfo){
+      const stars = wx.getStorageSync('stars')
+      this.setData({
+        starsList:stars
+      })
+    }
     this.getTabBar().init()
   },
 

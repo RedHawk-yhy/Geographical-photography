@@ -12,9 +12,23 @@
     </view>
   </view>
 </view>
+<van-dialog id="van-dialog" />
 <van-tabs bind:change="onChange" animated swipeable>
+  <van-tab title="收藏" class="title">
+    <view class="container">
+      <view class="item animated fadeInLeftBig" wx:for="{{ starsList }}" wx:key="id">
+        <image src="{{ item.image }}" mode="widthFix"></image>
+        <view class="text">
+          <view class="title">{{ item.title }}</view>
+          <view class="content">{{ item.content }}</view>
+          <view class="option">
+            <van-tag class="delTag" mark type="danger" data-id="{{ item._id }}" bindtap="handleDel">移除</van-tag>
+          </view>
+        </view>
+      </view>
+    </view>
+  </van-tab>
   <van-tab title="笔记" class="title">笔记笔记笔记笔记</van-tab>
-  <van-tab title="收藏" class="title">收藏</van-tab>
 </van-tabs>
 
 <van-dialog

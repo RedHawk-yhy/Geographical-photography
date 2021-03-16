@@ -7,7 +7,6 @@
       <view class="content">{{ item.content }}</view>
       <view class="option">
         <van-button type="default" round size="mini" bindtap="handleDetail" data-id="{{ item._id }}">阅读原文</van-button>
-        <van-icon class="star" name="star" />
       </view>
     </view>
   </view>

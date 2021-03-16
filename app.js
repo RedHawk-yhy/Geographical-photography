@@ -7,6 +7,6 @@ App({
   },
   globalData:{
     AppId:'wxd875a0123f0c8d51',
-    AppSecret:'9a81d1b5d2502d498695e0d414d29f93'
+    AppSecret:'9a81d1b5d2502d498695e0d414d29f93',
   }
 })

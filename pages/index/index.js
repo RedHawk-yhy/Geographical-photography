@@ -20,7 +20,8 @@ Page({
   onSearch: function(e){
     try {
       var value = wx.getStorageSync('searchList')
-      if (value) {
+      const isLogined = wx.getStorageSync('login')
+      if (value && isLogined ) {
         if(value.indexOf(e.detail) === -1){
           value.push(e.detail)
           wx.setStorage({
@@ -31,7 +32,7 @@ Page({
             searchList:value
           })
         }
-      }else{
+      }else if(isLogined){
         const arr = []
         arr.push(e.detail)
         this.setData({
@@ -56,24 +57,30 @@ Page({
     })
   },
   onFocus: function(){
+    const isLogined = wx.getStorageSync('login')
     this.setData({
       isSearch:true
     })
-    const that = this
-    wx.getStorage({
-      key: 'searchList',
-      success(res){
-        that.setData({
-          searchList:res.data
-        })
-      }
-    })
+    if(isLogined){
+      const that = this
+      wx.getStorage({
+        key: 'searchList',
+        success(res){
+          that.setData({
+            searchList:res.data
+          })
+        }
+      })
+    }else{
+      this.setData({
+        searchList: []
+      })
+    }
   },
   loadDaliyData(){
     const daliyDataList = []
     request('http://localhost:8088/api/v1/strategy',{ page:1,size:100 })
       .then(res => {
-        console.log(res);
         let countNums = []
         while(daliyDataList.length < 4){
           const num = Math.floor(Math.random()*res.data.success.length)
@@ -100,6 +107,8 @@ Page({
         data: that.data.searchList,
         key: 'searchList',
       })
+    }).catch((e) => {
+      console.log(e);
     })
   },
   picView(e){

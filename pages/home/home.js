@@ -1,6 +1,7 @@
 // pages/home/home.js
 const { request } = require('../../utils/request')
 import Dialog from '../../miniprogram_npm/@vant/weapp/dialog/dialog'
+const app = getApp()
 Page({
 
   /**
@@ -42,7 +43,6 @@ Page({
       })
     }else{
       request(`http://localhost:8088/api/v1/user/updateMark?nickName=${ this.data.userInfo.nickName }`,{ autograph:this.data.autographIpt },'POST').then(res => {
-        console.log(res);
         if(res.data.code === 1){
           wx.showToast({
             title: res.data.msg,
@@ -72,6 +72,7 @@ Page({
                   // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
                   wx.getUserInfo({
                     success: res => {
+                      wx.setStorageSync('login', true)
                       request('http://localhost:8088/api/v1/user').then((result) => {
                         const thisUser = result.data.find(item => res.userInfo.nickName === item.nickName)
                         that.setData({
@@ -114,6 +115,7 @@ Page({
             autograph:'请先登录哟！',
             starsList:[]
           })
+          wx.setStorageSync('login', false)
         }
       }
     })

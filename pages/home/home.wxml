@@ -28,7 +28,7 @@
       </view>
     </view>
   </van-tab>
-  <van-tab title="笔记" class="title">笔记笔记笔记笔记</van-tab>
+  <van-tab title="足迹" class="title">笔记笔记笔记笔记</van-tab>
 </van-tabs>
 
 <van-dialog

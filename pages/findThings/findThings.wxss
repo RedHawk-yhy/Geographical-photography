@@ -1,1 +1,13 @@
 /* pages/findThings/findThings.wxss */
+.van-card{
+  margin: 10rpx;
+}
+.desc{
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  white-space: normal !important;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}

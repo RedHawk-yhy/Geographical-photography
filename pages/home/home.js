@@ -168,6 +168,10 @@ Page({
       this.setData({
         starsList:stars
       })
+      const footMark = wx.getStorageSync('footMark')
+      this.setData({
+        footMark:footMark
+      })
     }
     this.getTabBar().init()
   },

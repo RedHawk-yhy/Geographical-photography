@@ -46,7 +46,7 @@ Page({
         if(footMark && footMark.length > 0){
           let arr = []
           footMark.forEach(item => {
-            arr.push(item)
+            arr.push(item._id)
           })
           if(arr.indexOf(_id) > -1){
             const index = arr.findIndex(item => item === _id)

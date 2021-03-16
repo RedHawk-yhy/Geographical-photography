@@ -16,7 +16,6 @@ Page({
   onLoad: function (options) {
     request(`http://localhost:8088/api/v1/find/${options.id}`)
       .then(res => {
-        console.log(res);
         this.setData({
           value:res.data
         })
@@ -24,7 +23,7 @@ Page({
         if(footMark && footMark.length > 0){
           let arr = []
           footMark.forEach(item => {
-            arr.push(item)
+            arr.push(item._id)
           })
           if(arr.indexOf(options.id) > -1){
             const index = arr.findIndex(item => item === options.id)
@@ -36,7 +35,6 @@ Page({
             wx.setStorageSync('footMark', footMark)
           }
         }else{
-          console.log(111);
           let footMark = []
           footMark.unshift(this.data.value)
           wx.setStorageSync('footMark', footMark)

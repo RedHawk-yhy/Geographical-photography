@@ -13,7 +13,8 @@ Page({
     isAutoGraph:false,
     autographIpt:'',
     errorMessage:'',
-    starsList:[]
+    starsList:[],
+    footMark:[]
   },
 
   /**
@@ -83,6 +84,7 @@ Page({
                           arr.push(item.nickName)
                         })
                         that.getStars()
+                        that.getfootMark()
                         if(arr.indexOf(res.userInfo.nickName) === -1){
                           request('http://localhost:8088/api/v1/user',{ nickName:res.userInfo.nickName,autograph:that.data.autograph },'POST')
                           .then(val => {
@@ -113,7 +115,8 @@ Page({
           that.setData({
             userInfo: null,
             autograph:'请先登录哟！',
-            starsList:[]
+            starsList:[],
+            footMark:[]
           })
           wx.setStorageSync('login', false)
         }
@@ -124,6 +127,12 @@ Page({
     const dataList = wx.getStorageSync('stars')
     this.setData({
       starsList:dataList
+    })
+  },
+  getfootMark(){
+    const dataList = wx.getStorageSync('footMark')
+    this.setData({
+      footMark:dataList
     })
   },
   handleDel(e){

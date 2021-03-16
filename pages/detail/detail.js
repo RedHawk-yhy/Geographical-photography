@@ -20,6 +20,27 @@ Page({
         this.setData({
           value:res.data
         })
+        let footMark = wx.getStorageSync('footMark')
+        if(footMark && footMark.length > 0){
+          let arr = []
+          footMark.forEach(item => {
+            arr.push(item)
+          })
+          if(arr.indexOf(options.id) > -1){
+            const index = arr.findIndex(item => item === options.id)
+            footMark.splice(index,1)
+            footMark.unshift(this.data.value)
+            wx.setStorageSync('footMark', footMark)
+          }else{
+            footMark.unshift(this.data.value)
+            wx.setStorageSync('footMark', footMark)
+          }
+        }else{
+          console.log(111);
+          let footMark = []
+          footMark.unshift(this.data.value)
+          wx.setStorageSync('footMark', footMark)
+        }
       })
   },
 

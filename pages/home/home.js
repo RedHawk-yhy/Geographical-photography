@@ -1,6 +1,7 @@
 // pages/home/home.js
 const { request } = require('../../utils/request')
 import Dialog from '../../miniprogram_npm/@vant/weapp/dialog/dialog'
+import Notify from '../../miniprogram_npm/@vant/weapp/notify/notify';
 const app = getApp()
 Page({
 
@@ -150,6 +151,27 @@ Page({
     }).catch(()=>{
       
     })
+  },
+  delFootMark(){
+    const that = this
+    const isLogined = wx.getStorageSync('login')
+    if(isLogined){
+      const footMark = wx.getStorageSync('footMark')
+      if(footMark && footMark.length > 0){
+        Dialog.confirm({
+          message: '您确定要清空足迹么？'
+        }).then(() => {
+          wx.setStorageSync('footMark', [])
+          that.setData({
+            footMark:[]
+          })
+        }).catch(()=>{})
+      }else{
+        Notify({ type: 'primary', message: '暂无足迹', duration: 2000 });
+      }
+    }else{
+      Notify({ type: 'danger', message: '请先登录', duration: 2000 });
+    }
   },
   onClose(e){
     const { position, instance } = e.detail;

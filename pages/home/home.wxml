@@ -13,6 +13,7 @@
   </view>
 </view>
 <van-dialog id="van-dialog" />
+<van-notify id="van-notify" />
 <van-tabs bind:change="onChange" animated swipeable>
   <van-tab title="收藏" class="title">
     <view class="container">
@@ -33,7 +34,9 @@
     </view>
   </van-tab>
   <van-tab title="足迹" class="title">
+    
     <view class="container">
+      <van-button type="danger" class="delFootMark" size="mini" bindtap="delFootMark">清空足迹</van-button>
       <view class="item animated fadeInLeftBig" wx:for="{{ footMark }}" wx:key="id">
         <image class="image" src="{{ item.image }}" mode="widthFix"></image>
         <view class="text footTxt">

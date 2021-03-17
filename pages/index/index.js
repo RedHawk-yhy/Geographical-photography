@@ -2,6 +2,7 @@ const { request } = require('../../utils/request')
 const app = getApp() // 获取App实例，关联app.js 用来获取globalData数据
 // const axios = require('axios')
 import Dialog from '../../miniprogram_npm/@vant/weapp/dialog/dialog'
+import Notify from '../../miniprogram_npm/@vant/weapp/notify/notify';
 Page({
   data: {
     banners: ["https://s3.ax1x.com/2021/02/08/yNjDFH.jpg", "https://s3.ax1x.com/2021/02/08/yNj0Te.jpg",
@@ -96,20 +97,30 @@ Page({
   },
   delMarks(){
     const that = this
-    Dialog.confirm({
-      // title: '标题',
-      message: '您确定要清空搜索记录么？',
-    }).then(()=>{
-      that.setData({
-        searchList:[]
-      })
-      wx.setStorage({
-        data: that.data.searchList,
-        key: 'searchList',
-      })
-    }).catch((e) => {
-      console.log(e);
-    })
+    const isLogined = wx.getStorageSync('login')
+    if(isLogined){
+      const searchMark = wx.getStorageSync('searchList')
+      if(searchMark && searchMark.length > 0){
+        Dialog.confirm({
+          // title: '标题',
+          message: '您确定要清空搜索记录么？',
+        }).then(()=>{
+          that.setData({
+            searchList:[]
+          })
+          wx.setStorage({
+            data: that.data.searchList,
+            key: 'searchList',
+          })
+        }).catch((e) => {
+          console.log(e);
+        })
+      }else{
+        Notify({ type: 'primary', message: '暂无搜索记录', duration: 2000 });
+      }
+    }else{
+      Notify({ type: 'danger', message: '请登录', duration: 2000});
+    }
   },
   picView(e){
     const url = e.target.dataset.url

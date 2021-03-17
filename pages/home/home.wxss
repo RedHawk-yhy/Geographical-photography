@@ -118,4 +118,7 @@ page{
 .item .footTitle{
   margin-bottom: 50rpx;
 }
+.delFootMark{
+  margin-left: 10rpx;
+}
 

@@ -3,6 +3,9 @@
   <image src="{{ value.image }}" mode="widthFix"></image>
   <view class="title">{{ value.title }}</view>
   <view class="content">{{ value.content }}</view>
-  <van-icon class="star" name="star" catchtap="handleStar" wx:if="{{ checked }}"/>
-  <van-icon class="star" name="star-o" catchtap="handleStar" wx:else />
+  <view class="option" wx:if="{{ isLogined }}">
+    <van-icon class="star" name="star" catchtap="handleStar" wx:if="{{ checked }}"/>
+    <van-icon class="star" name="star-o" catchtap="handleStar" wx:else />
+  </view>
+  
 </view>

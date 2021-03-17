@@ -8,7 +8,8 @@ Page({
    */
   data: {
     value:{},
-    checked:false
+    checked:false,
+    isLogined:Boolean
   },
 
   /**
@@ -17,6 +18,10 @@ Page({
   onLoad: function (options) {
     const that = this
     const _id = options.id
+    const isLogined = wx.getStorageSync('login')
+    this.setData({
+      isLogined: isLogined
+    })
     request(`http://localhost:8088/api/v1/skills/${_id}`)
       .then(res => {
         const stars = wx.getStorageSync('stars')
@@ -42,26 +47,28 @@ Page({
         this.setData({
           value:res.data
         })
-        let footMark = wx.getStorageSync('footMark')
-        if(footMark && footMark.length > 0){
-          let arr = []
-          footMark.forEach(item => {
-            arr.push(item._id)
-          })
-          if(arr.indexOf(_id) > -1){
-            const index = arr.findIndex(item => item === _id)
-            footMark.splice(index,1)
-            footMark.unshift(this.data.value)
-            wx.setStorageSync('footMark', footMark)
+        if(this.data.isLogined){
+          let footMark = wx.getStorageSync('footMark')
+          if(footMark && footMark.length > 0){
+            let arr = []
+            footMark.forEach(item => {
+              arr.push(item._id)
+            })
+            if(arr.indexOf(_id) > -1){
+              const index = arr.findIndex(item => item === _id)
+              footMark.splice(index,1)
+              footMark.unshift(this.data.value)
+              wx.setStorageSync('footMark', footMark)
+            }else{
+              footMark.unshift(this.data.value)
+              wx.setStorageSync('footMark', footMark)
+            }
           }else{
+            console.log(111);
+            let footMark = []
             footMark.unshift(this.data.value)
             wx.setStorageSync('footMark', footMark)
           }
-        }else{
-          console.log(111);
-          let footMark = []
-          footMark.unshift(this.data.value)
-          wx.setStorageSync('footMark', footMark)
         }
       })
   },

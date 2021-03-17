@@ -36,8 +36,8 @@
     <view class="container">
       <view class="item animated fadeInLeftBig" wx:for="{{ footMark }}" wx:key="id">
         <image class="image" src="{{ item.image }}" mode="widthFix"></image>
-        <view class="text">
-          <view class="title">{{ item.title }}</view>
+        <view class="text footTxt">
+          <view class="title footTitle">{{ item.title }}</view>
           <view class="content">{{ item.content }}</view>
         </view>
       </view>

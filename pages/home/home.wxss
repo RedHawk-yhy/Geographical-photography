@@ -62,6 +62,7 @@ page{
 }
 
 .title{
+  font-size: 26rpx;
   display: -webkit-box;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -87,7 +88,7 @@ page{
   height:100rpx;
   font-size:30rpx;
   text-align:center;
-  color: #aaa;
+  color: rgb(97, 97, 97);
 }
 .option .star{
   width: 30rpx;
@@ -95,12 +96,7 @@ page{
   right: 24rpx;
   bottom: 28rpx;
 }
-.delTag{
-  float: right;
-}
-.touchCell{
-  touch-action: none;
-}
+
 .delete{
   width: 65px;
   height: 100%;
@@ -110,3 +106,16 @@ page{
   line-height: 136px;
   font-weight: 300;
 }
+.container .image{
+  width: 130px;
+  margin: 0 30rpx;
+}
+.footTxt{
+  overflow: hidden;
+  margin-right: 30rpx;
+  color: rgb(117, 117, 117);
+}
+.item .footTitle{
+  margin-bottom: 50rpx;
+}
+

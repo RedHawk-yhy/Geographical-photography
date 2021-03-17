@@ -136,7 +136,6 @@ Page({
     })
   },
   handleDel(e){
-    
     Dialog.confirm({
       // title: '标题',
       message: '您确定要取消收藏么？',
@@ -151,6 +150,30 @@ Page({
     }).catch(()=>{
       
     })
+  },
+  onClose(e){
+    const { position, instance } = e.detail;
+    switch (position) {
+      case 'cell':
+        instance.close();
+        break;
+      case 'right':
+        Dialog.confirm({
+          message: '确定删除吗？',
+        }).then(() => {
+          const stars = wx.getStorageSync('stars')
+          const index = stars.findIndex(item => item._id === e.target.dataset.id)
+          stars.splice(index,1)
+          wx.setStorageSync('stars', stars)
+          this.setData({
+            starsList:stars
+          })
+          instance.close();
+        }).catch(()=>{
+          instance.close()
+        })
+        break;
+    }
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -169,6 +192,7 @@ Page({
         starsList:stars
       })
       const footMark = wx.getStorageSync('footMark')
+      console.log(footMark);
       this.setData({
         footMark:footMark
       })

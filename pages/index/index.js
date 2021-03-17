@@ -123,6 +123,7 @@ Page({
   onLoad: function () {
     console.log(app.globalData);
     this.loadDaliyData()
+    wx.setStorageSync('login', false)
   },
   onShow(){
     this.getTabBar().init()

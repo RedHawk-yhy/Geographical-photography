@@ -98,3 +98,15 @@ page{
 .delTag{
   float: right;
 }
+.touchCell{
+  touch-action: none;
+}
+.delete{
+  width: 65px;
+  height: 100%;
+  background: #EE0A24;
+  color: white;
+  text-align: center;
+  line-height: 136px;
+  font-weight: 300;
+}

@@ -16,22 +16,26 @@
 <van-tabs bind:change="onChange" animated swipeable>
   <van-tab title="收藏" class="title">
     <view class="container">
-      <view class="item animated fadeInLeftBig" wx:for="{{ starsList }}" wx:key="id">
-        <image src="{{ item.image }}" mode="widthFix"></image>
-        <view class="text">
-          <view class="title">{{ item.title }}</view>
-          <view class="content">{{ item.content }}</view>
-          <view class="option">
-            <van-tag class="delTag" mark type="danger" data-id="{{ item._id }}" bindtap="handleDel">移除</van-tag>
-          </view>
-        </view>
-      </view>
+      <van-swipe-cell class="touchCell" right-width="{{ 65 }}" wx:for="{{ starsList }}" wx:key="id" data-id="{{ item._id }}" async-close bind:close="onClose">
+        <van-cell-group>
+          <van-cell>
+            <view class="item animated fadeInLeftBig">
+              <image src="{{ item.image }}" mode="widthFix"></image>
+              <view class="text">
+                <view class="title">{{ item.title }}</view>
+                <view class="content">{{ item.content }}</view>
+              </view>
+            </view>
+          </van-cell>
+        </van-cell-group>
+        <view slot="right" class="delete">删除</view>
+      </van-swipe-cell>
     </view>
   </van-tab>
   <van-tab title="足迹" class="title">
     <view class="container">
       <view class="item animated fadeInLeftBig" wx:for="{{ footMark }}" wx:key="id">
-        <image src="{{ item.image }}" mode="widthFix"></image>
+        <image class="image" src="{{ item.image }}" mode="widthFix"></image>
         <view class="text">
           <view class="title">{{ item.title }}</view>
           <view class="content">{{ item.content }}</view>

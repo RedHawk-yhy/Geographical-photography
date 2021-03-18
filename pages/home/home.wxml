@@ -32,7 +32,7 @@
   </van-tab>
   <van-tab title="收藏" class="title">
     <view class="container">
-      <van-swipe-cell class="touchCell" right-width="{{ 65 }}" wx:for="{{ starsList }}" wx:key="id" async-close bind:close="onClose">
+      <van-swipe-cell class="touchCell" right-width="{{ 65 }}" wx:for="{{ starsList }}" wx:key="id" data-id="{{ item._id }}" async-close bind:close="onClose">
         <van-cell-group>
           <van-cell>
             <view class="item animated fadeInLeftBig" data-id="{{ item._id }}" catchtap="goDetail" >

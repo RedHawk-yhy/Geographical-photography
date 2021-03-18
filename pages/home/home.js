@@ -186,7 +186,7 @@ Page({
           message: '确定删除吗？',
         }).then(() => {
           const stars = wx.getStorageSync('stars')
-          const index = stars.findIndex(item => item._id === e.target.dataset.id)
+          const index = stars.findIndex(item => item._id === e.currentTarget.dataset.id)
           stars.splice(index,1)
           wx.setStorageSync('stars', stars)
           this.setData({

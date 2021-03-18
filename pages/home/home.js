@@ -89,7 +89,7 @@ Page({
                         if(arr.indexOf(res.userInfo.nickName) === -1){
                           request('http://localhost:8088/api/v1/user',{ nickName:res.userInfo.nickName,autograph:that.data.autograph },'POST')
                           .then(val => {
-                            console.log(val);
+                            
                           })
                         }
                       })
@@ -197,6 +197,11 @@ Page({
         break;
     }
   },
+  goDetail(e){
+    wx.navigateTo({
+      url: `../skillsDetail/skillsDetail?id=${ e.currentTarget.dataset.id }`,
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -214,7 +219,6 @@ Page({
         starsList:stars
       })
       const footMark = wx.getStorageSync('footMark')
-      console.log(footMark);
       this.setData({
         footMark:footMark
       })

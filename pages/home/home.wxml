@@ -14,13 +14,13 @@
 </view>
 <van-dialog id="van-dialog" />
 <van-notify id="van-notify" />
-<van-tabs bind:change="onChange" animated swipeable>
+<van-tabs animated swipeable>
   <van-tab title="收藏" class="title">
     <view class="container">
-      <van-swipe-cell class="touchCell" right-width="{{ 65 }}" wx:for="{{ starsList }}" wx:key="id" data-id="{{ item._id }}" async-close bind:close="onClose">
+      <van-swipe-cell class="touchCell" right-width="{{ 65 }}" wx:for="{{ starsList }}" wx:key="id" async-close bind:close="onClose">
         <van-cell-group>
           <van-cell>
-            <view class="item animated fadeInLeftBig">
+            <view class="item animated fadeInLeftBig" data-id="{{ item._id }}" catchtap="goDetail" >
               <image src="{{ item.image }}" mode="widthFix"></image>
               <view class="text">
                 <view class="title">{{ item.title }}</view>
@@ -37,7 +37,7 @@
     
     <view class="container">
       <van-button type="danger" class="delFootMark" size="mini" bindtap="delFootMark">清空足迹</van-button>
-      <view class="item animated fadeInLeftBig" wx:for="{{ footMark }}" wx:key="id">
+      <view class="item animated fadeInLeftBig" wx:for="{{ footMark }}" wx:key="id" data-id="{{ item._id }}" catchtap="goDetail">
         <image class="image" src="{{ item.image }}" mode="widthFix"></image>
         <view class="text footTxt">
           <view class="title footTitle">{{ item.title }}</view>

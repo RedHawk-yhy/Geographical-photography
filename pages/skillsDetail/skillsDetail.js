@@ -64,7 +64,6 @@ Page({
               wx.setStorageSync('footMark', footMark)
             }
           }else{
-            console.log(111);
             let footMark = []
             footMark.unshift(this.data.value)
             wx.setStorageSync('footMark', footMark)

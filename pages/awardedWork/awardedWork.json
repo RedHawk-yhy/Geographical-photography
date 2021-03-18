@@ -1,4 +1,5 @@
 {
+  "navigationBarTitleText": "获奖作品",
   "usingComponents": {
     "mp-html": "mp-html"
   }

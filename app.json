@@ -11,7 +11,10 @@
     "pages/findThings/findThings",
     "components/card/card",
     "pages/detail/detail",
-    "pages/skillsDetail/skillsDetail"
+    "pages/skillsDetail/skillsDetail",
+    "pages/thingsDetail/thingsDetail",
+    "pages/cart/cart",
+    "pages/buyNow/buyNow"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -62,7 +65,13 @@
     "van-loading": "@vant/weapp/loading/index",
     "van-toast": "@vant/weapp/toast/index",
     "van-swipe-cell": "@vant/weapp/swipe-cell/index",
-    "van-notify": "@vant/weapp/notify/index"
+    "van-notify": "@vant/weapp/notify/index",
+    "van-goods-action": "@vant/weapp/goods-action/index",
+    "van-goods-action-icon": "@vant/weapp/goods-action-icon/index",
+    "van-goods-action-button": "@vant/weapp/goods-action-button/index",
+    "van-share-sheet": "@vant/weapp/share-sheet/index",
+    "van-submit-bar": "@vant/weapp/submit-bar/index",
+    "van-popup": "@vant/weapp/popup/index"
   },
   "plugins": {
     "brickLayout": {

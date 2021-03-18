@@ -1,5 +1,5 @@
 <!--pages/findThings/findThings.wxml-->
-<van-card wx:for="{{ dataList }}" price="{{ item.price }}" title="{{ item.title }}" thumb="{{ item.image }}" wx:key="index" origin-price="{{ item.originPrice }}">
+<van-card wx:for="{{ dataList }}" price="{{ item.price }}" title="{{ item.title }}" thumb="{{ item.image }}" wx:key="index" origin-price="{{ item.originPrice }}" data-id="{{ item._id }}" bindtap="goDetail">
   <view slot="desc">
     <view class="desc">{{ item.desc }}</view>
   </view>

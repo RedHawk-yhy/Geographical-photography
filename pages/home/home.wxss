@@ -121,4 +121,21 @@ page{
 .delFootMark{
   margin-left: 10rpx;
 }
+.price text{
+  color: #EE0A24;
+  margin-top: 10px;
+  margin-left: 140px;
+}
+.price .num{
+  color: rgb(165, 165, 165);
+  font-size: 20rpx;
+  float: right;
+  margin-top: -14px;
+}
+.totalPrice{
+  float: right;
+  margin-top: 10px;
+  font-size: 30rpx;
+  color: #EE0A24;
+}
 

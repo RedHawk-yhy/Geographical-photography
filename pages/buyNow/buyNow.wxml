@@ -1,0 +1,22 @@
+<!--pages/buNow/buyNow.wxml-->
+<van-card
+  num="{{ num }}"
+  price="{{value.price }}"
+  title="{{ value.title }}"
+  thumb="{{ value.image }}"
+>
+  <view class="desc" slot="desc">
+    {{ value.desc }}
+  </view>
+  <view slot="footer">
+    <van-button size="mini" bind:click="sub" disabled="{{ num > 1 ? false : true }}">-</van-button>
+    <van-button size="mini" bind:click="add">+</van-button>
+  </view>
+</van-card> 
+
+<van-submit-bar
+  price="{{ value.price * num * 100 }}"
+  button-text="提交订单"
+  bind:submit="onSubmit"
+/>
+

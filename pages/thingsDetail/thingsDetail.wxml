@@ -1,0 +1,36 @@
+<van-toast id="van-toast" />
+<van-notify id="van-notify" />
+<!-- 商品 -->
+<view class="container">
+  <view class="image">
+    <image src="{{ value.image }}" mode="widthFix"></image>
+  </view>
+  <view class="txt">
+    <view class="title">{{ value.title }}</view>
+    <view class="price">
+      <text>￥{{ value.price }}</text>
+      <text class="originPrice">￥{{ value.originPrice }}</text>
+    </view>
+    <view class="desc">{{ value.desc }}</view>
+  </view>
+</view>
+<!-- 分享面板 -->
+<van-share-sheet
+  show="{{ showShare }}"
+  title="立即分享给好友"
+  options="{{ options }}"
+  bind:select="onSelect"
+  bind:close="onClose"
+/>
+<!-- 详情底部菜单 -->
+<van-goods-action>
+  <van-goods-action-icon icon="share-o" text="分享" bind:click="onShareClick" />
+  <van-goods-action-icon icon="cart-o" text="购物车" bind:click="addToCart" />
+  <van-goods-action-button
+    text="加入购物车"
+    type="warning"
+    bind:click="onClickButton"
+  />
+  <van-goods-action-button text="立即购买" bind:click="buyNowClick" data-id="{{ value._id }}" />
+</van-goods-action>
+

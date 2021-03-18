@@ -1,33 +1,23 @@
-// pages/findThings/findThings.js
+// pages/cart/cart.js
 const { request } = require('../../utils/request')
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    dataList:[]
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.loadData('http://localhost:8088/api/v1/goods')
+    console.log(options.id);
+
   },
-  loadData(url){
-    request(url)
-      .then(res => {
-        this.setData({
-          dataList:res.data.success
-        })
-      })
-  },
-  goDetail(e){
-    wx.navigateTo({
-      url: `../thingsDetail/thingsDetail?id=${e.currentTarget.dataset.id}`,
-    })
-  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

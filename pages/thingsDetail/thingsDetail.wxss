@@ -1,0 +1,31 @@
+/* pages/thingsDetail/thingsDetail.wxss */
+
+.container{
+  padding: 0 50rpx;
+}
+.txt{
+  margin-top: 20rpx;
+}
+.title{
+  font-size: 50rpx;
+  font-weight: 500;
+  margin-left: 10rpx;
+  margin-bottom: 20rpx;
+}
+.price{
+  font-size: 50rpx;
+  color: #d90429;
+}
+.price .originPrice{
+  margin-left: 10rpx; 
+  font-size: 20rpx;
+  text-decoration:line-through;
+  color: rgb(175, 175, 175);
+}
+.desc{
+  margin-top: 26rpx;
+  margin-left: 10rpx;
+  font-weight: 300;
+  
+}
+

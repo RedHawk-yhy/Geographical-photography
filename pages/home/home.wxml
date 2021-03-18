@@ -15,6 +15,21 @@
 <van-dialog id="van-dialog" />
 <van-notify id="van-notify" />
 <van-tabs animated swipeable>
+  <van-tab title="购物车" class="title">
+    <view class="container">
+      <view class="item animated fadeInLeftBig" wx:for="{{ carts }}" wx:key="index" data-id="{{ item._id }}" catchtap="goDetail" >
+        <image src="{{ item.image }}" mode="widthFix"></image>
+        <view class="text">
+          <view class="title">{{ item.title }}</view>
+          <view class="content">{{ item.desc }}</view>
+          <view class="price">
+            <text>￥{{ item.price }} * <text class="num">{{ item.num }}</text></text>
+          </view>
+          <view class="totalPrice">￥{{ item.totalPrice }}</view>
+        </view>
+      </view>
+    </view>
+  </van-tab>
   <van-tab title="收藏" class="title">
     <view class="container">
       <van-swipe-cell class="touchCell" right-width="{{ 65 }}" wx:for="{{ starsList }}" wx:key="id" async-close bind:close="onClose">
@@ -34,7 +49,6 @@
     </view>
   </van-tab>
   <van-tab title="足迹" class="title">
-    
     <view class="container">
       <van-button type="danger" class="delFootMark" size="mini" bindtap="delFootMark">清空足迹</van-button>
       <view class="item animated fadeInLeftBig" wx:for="{{ footMark }}" wx:key="id" data-id="{{ item._id }}" catchtap="goDetail">

@@ -15,21 +15,15 @@ Page({
     autographIpt:'',
     errorMessage:'',
     starsList:[],
-    footMark:[]
+    footMark:[],
+    carts:[]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    const that = this
-    wx.getSetting({
-      success(res){
-        if(res.authSetting['scope.userInfo']){
-          that.getUserInfo()
-        }
-      }
-    })
+    
   },
   editAutograph(){
     this.setData({
@@ -86,6 +80,7 @@ Page({
                         })
                         that.getStars()
                         that.getfootMark()
+                        that.getCarts()
                         if(arr.indexOf(res.userInfo.nickName) === -1){
                           request('http://localhost:8088/api/v1/user',{ nickName:res.userInfo.nickName,autograph:that.data.autograph },'POST')
                           .then(val => {
@@ -117,7 +112,8 @@ Page({
             userInfo: null,
             autograph:'请先登录哟！',
             starsList:[],
-            footMark:[]
+            footMark:[],
+            carts:[]
           })
           wx.setStorageSync('login', false)
         }
@@ -134,6 +130,12 @@ Page({
     const dataList = wx.getStorageSync('footMark')
     this.setData({
       footMark:dataList
+    })
+  },
+  getCarts(){
+    const dataList = wx.getStorageSync('carts')
+    this.setData({
+      carts:dataList
     })
   },
   handleDel(e){
@@ -213,6 +215,14 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    const that = this
+    wx.getSetting({
+      success(res){
+        if(res.authSetting['scope.userInfo']){
+          that.getUserInfo()
+        }
+      }
+    })
     if(this.data.userInfo){
       const stars = wx.getStorageSync('stars')
       this.setData({
@@ -222,7 +232,13 @@ Page({
       this.setData({
         footMark:footMark
       })
+      const carts = wx.getStorageSync('carts')
+      this.setData({
+        carts:carts
+      })
+      console.log(this.data.starsList);
     }
+    
     this.getTabBar().init()
   },
 

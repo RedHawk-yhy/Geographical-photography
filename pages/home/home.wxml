@@ -5,6 +5,7 @@
     {{userInfo.nickName?userInfo.nickName:"点击获取个人信息"}}
   </text>
   <view class="exits" bindtap="exits"><van-tag type="danger">{{userInfo?"退出":""}}</van-tag></view>
+  <view class="mycard" catchtap="switchToCart"><van-tag type="primary">{{userInfo?"购物车":""}}</van-tag></view>
   <view class="autograph">
     <view>
       {{autograph}}
@@ -26,7 +27,7 @@
           <view class="price">
             <text>￥{{ item.price }} * <text class="num">{{ item.num }}</text></text>
           </view>
-          <view class="totalPrice">￥{{ item.totalPrice }}</view>
+          <view class="totalPrice">￥{{ item.num * item.price }}</view>
         </view>
         <view class="option">
           <van-button class="optionBtn" color="linear-gradient(to right, #FF6034, #EE0B24)" data-id="{{ item._id }}" size="mini" catchtap="submitOrder">确认收货</van-button>

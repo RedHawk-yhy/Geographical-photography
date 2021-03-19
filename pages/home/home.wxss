@@ -29,6 +29,11 @@ page{
   /* top: 10rpx; */
   font-size: 28rpx;
 }
+.mycard{
+  position: absolute;
+  right: 50px;
+  font-size: 28rpx;
+}
 .menu{
   padding-left: 40rpx;
 }

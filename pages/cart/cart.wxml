@@ -1,10 +1,36 @@
+
+<van-toast id="van-toast" />
+<van-dialog id="van-dialog" />
+<van-notify id="van-notify" />
+
+
+<van-checkbox-group value="{{ result }}" bind:change="onChange" wx:if="{{ carts.length > 0 }}">
+  <view wx:for="{{ carts }}" wx:key="index">
+    <van-checkbox name="{{ item._id }}" />
+    <van-card
+      num="{{ item.num }}"
+      price="{{ item.price }}"
+      desc="{{ item.desc }}"
+      title="{{ item.title }}"
+      thumb="{{ item.image }}"
+    >
+      <view slot="thumb" class="thumb">
+        <image src="{{ item.image }}" />
+      </view>
+      <view slot="footer">
+        <van-button icon="minus" type="info" plain round size="mini" data-id="{{ item._id }}" bind:click="handleMinus" disabled="{{ item.num > 1 ? false : true }}"/>
+        <van-button icon="plus" type="info" plain round  size="mini" data-id="{{ item._id }}" bind:click="handleAdd"/>
+      </view>
+    </van-card>
+  </view>
+</van-checkbox-group>
+<van-empty description="购物车是空的" wx:else/>
 <van-submit-bar
-  price="{{ 3050 }}"
+  price="{{ totalNum }}"
   button-text="提交订单"
   bind:submit="onClickButton"
   tip="{{ true }}"
 >
-  <van-tag type="primary">标签</van-tag>
-  <view slot="tip">您的收货地址不支持同城送, <text>修改地址</text></view>
+  
 </van-submit-bar>
 

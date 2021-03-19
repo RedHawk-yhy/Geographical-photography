@@ -234,6 +234,11 @@ Page({
       })
       .catch(() => {});
   },
+  switchToCart(){
+    wx.navigateTo({
+      url: '../cart/cart',
+    })
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成

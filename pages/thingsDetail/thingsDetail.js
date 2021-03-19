@@ -19,6 +19,9 @@ Page({
       { name: '分享海报', icon: 'poster' },
       { name: '二维码', icon: 'qrcode' },
     ],
+    showNum:false,
+    showNumValue:{},
+    num:1
   },
 
   /**
@@ -79,6 +82,86 @@ Page({
   onSelect(event) {
     Toast(event.detail.name);
     this.onClose();
+  },
+  handleMyCart(){
+    const isLogined = wx.getStorageSync('login')
+    if(isLogined){
+      wx.navigateTo({
+        url: '../cart/cart',
+      })
+    }else{
+      Notify({ 
+        type: 'danger', 
+        message: '请先登录', 
+        duration: 3000, 
+        onClose:()=>{
+          wx.switchTab({
+            url: '../home/home',
+          })
+        }
+      });
+    }
+    
+  },
+  addToCart(){
+    const isLogined = wx.getStorageSync('login')
+    if(isLogined){
+      const obj = this.data.value
+      this.setData({
+        showNum:true,
+        showNumValue:obj
+      })
+    }else{
+      Notify({ 
+        type: 'danger', 
+        message: '请先登录', 
+        duration: 3000, 
+        onClose:()=>{
+          wx.switchTab({
+            url: '../home/home',
+          })
+        }
+      });
+    }
+    
+  },
+  handleMinus(){
+    this.setData({
+      num : this.data.num - 1
+    })
+  },
+  handleAdd(){
+    this.setData({
+      num : this.data.num + 1
+    })
+  },
+  onSubmit(){
+    const carts = wx.getStorageSync('carts')
+    if(carts && carts.length > 0){
+      const obj = this.data.showNumValue
+      const arr = []
+      carts.forEach(item => {
+        arr.push(item._id)
+      })
+      if(arr.indexOf(obj._id) > -1 ){
+        const index = carts.findIndex(item => item._id === obj._id)
+        carts[index].num += this.data.num
+        wx.setStorageSync('carts', carts)
+      }else{
+        obj.num = this.data.num
+        carts.push(obj)
+        wx.setStorageSync('carts', carts)
+      }
+    }else{
+      const carts = []
+      const obj = this.data.showNumValue
+      obj.num = this.data.num
+      carts.push(obj)
+      wx.setStorageSync('carts', carts)
+    }
+    wx.navigateTo({
+      url: '../cart/cart',
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

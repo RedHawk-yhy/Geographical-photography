@@ -72,7 +72,9 @@
     "van-share-sheet": "@vant/weapp/share-sheet/index",
     "van-submit-bar": "@vant/weapp/submit-bar/index",
     "van-popup": "@vant/weapp/popup/index",
-    "van-empty": "@vant/weapp/empty/index"
+    "van-empty": "@vant/weapp/empty/index",
+    "van-checkbox": "@vant/weapp/checkbox/index",
+    "van-checkbox-group": "@vant/weapp/checkbox-group/index"
   },
   "plugins": {
     "brickLayout": {

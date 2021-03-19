@@ -25,12 +25,33 @@
 <!-- 详情底部菜单 -->
 <van-goods-action>
   <van-goods-action-icon icon="share-o" text="分享" bind:click="onShareClick" />
-  <van-goods-action-icon icon="cart-o" text="购物车" bind:click="addToCart" />
+  <van-goods-action-icon icon="cart-o" text="购物车" bind:click="handleMyCart" />
   <van-goods-action-button
     text="加入购物车"
     type="warning"
-    bind:click="onClickButton"
+    bind:click="addToCart"
   />
   <van-goods-action-button text="立即购买" bind:click="buyNowClick" data-id="{{ value._id }}" />
 </van-goods-action>
+<!-- 加入购物车后的弹窗 -->
+<van-dialog
+  use-slot
+  title="请选择数量"
+  show="{{ showNum }}"
+  show-cancel-button
+  bind:close="onCloseNum"
+  bind:confirm="onSubmit"
+>
+  <view class="wrap">
+    <view>
+      <image src="{{ showNumValue.image }}" mode="widthFix" />
+    </view>
+    <view></view>
+    <view class="bottom">
+      <van-button icon="minus" type="info" plain round size="small" bind:click="handleMinus" disabled="{{ num > 1 ? false : true }}"/>
+      <text>{{ num }}</text>
+      <van-button icon="plus" type="info" plain round  size="small" bind:click="handleAdd"/>
+    </view>
+  </view>
+</van-dialog>
 

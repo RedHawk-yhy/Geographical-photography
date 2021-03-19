@@ -29,3 +29,12 @@
   
 }
 
+.bottom{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.van-button--small{
+  margin: 10px;
+}
+

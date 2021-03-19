@@ -12,8 +12,8 @@
     {{ value.desc }}
   </view>
   <view slot="footer">
-    <van-button size="mini" bind:click="sub" disabled="{{ num > 1 ? false : true }}">-</van-button>
-    <van-button size="mini" bind:click="add">+</van-button>
+    <van-button icon="minus" type="info" plain round size="mini" bind:click="sub" disabled="{{ num > 1 ? false : true }}" />
+    <van-button icon="plus" type="info" plain round size="mini" bind:click="add" />
   </view>
 </van-card> 
 

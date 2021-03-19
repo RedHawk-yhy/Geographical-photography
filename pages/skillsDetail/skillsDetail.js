@@ -16,7 +16,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options);
     const that = this
     const _id = options.id
     const isLogined = wx.getStorageSync('login')

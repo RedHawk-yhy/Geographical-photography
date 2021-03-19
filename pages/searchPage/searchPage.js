@@ -10,7 +10,6 @@ Page({
     activeNames: [],
   },
   onChange(event) {
-    console.log(event);
     this.setData({
       activeNames: event.detail,
     });

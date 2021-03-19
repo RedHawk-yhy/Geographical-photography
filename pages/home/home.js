@@ -267,7 +267,6 @@ Page({
       this.setData({
         products:products
       })
-      console.log(this.data.starsList);
     }
     
     this.getTabBar().init()

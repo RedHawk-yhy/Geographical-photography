@@ -47,11 +47,9 @@ Page({
           totalPrice:this.data.num * this.data.value.price
         })
         const products = wx.getStorageSync('products')
-        console.log(products);
         const order = this.data.value
         order.num = this.data.num
         order.totalPrice = this.data.totalPrice
-        console.log(order);
         if(products && products.length > 0){
           products.unshift(order)
           wx.setStorageSync('products', products)

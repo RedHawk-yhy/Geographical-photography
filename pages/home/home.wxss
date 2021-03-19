@@ -74,7 +74,7 @@ page{
 .content{
   font-weight: 400;
   font-size: 24rpx;
-  margin: 20rpx 0;
+  margin: 16rpx 0;
   display: -webkit-box;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -122,7 +122,7 @@ page{
   margin-left: 10rpx;
 }
 .price text{
-  margin-top: 10px;
+  margin-top: 5px;
   margin-left: 140px;
 }
 .price .num{
@@ -133,8 +133,16 @@ page{
 }
 .totalPrice{
   float: right;
-  margin-top: 10px;
+  margin-top: 5px;
   font-size: 30rpx;
   color: #EE0A24;
+}
+.options{
+  position: relative;
+}
+.option .optionBtn{
+  position: absolute;
+  bottom: 20rpx;
+  right: 0;
 }
 

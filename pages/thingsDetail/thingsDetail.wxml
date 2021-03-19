@@ -1,5 +1,5 @@
 <van-toast id="van-toast" />
-<van-notify id="van-notify" />
+<van-notify id="van-notify"/>
 <!-- 商品 -->
 <view class="container">
   <view class="image">

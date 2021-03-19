@@ -2,6 +2,7 @@
 const { request } = require('../../utils/request')
 import Dialog from '../../miniprogram_npm/@vant/weapp/dialog/dialog'
 import Notify from '../../miniprogram_npm/@vant/weapp/notify/notify';
+import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast';
 const app = getApp()
 Page({
 
@@ -16,7 +17,7 @@ Page({
     errorMessage:'',
     starsList:[],
     footMark:[],
-    carts:[]
+    products:[]
   },
 
   /**
@@ -80,7 +81,7 @@ Page({
                         })
                         that.getStars()
                         that.getfootMark()
-                        that.getCarts()
+                        that.getProducts()
                         if(arr.indexOf(res.userInfo.nickName) === -1){
                           request('http://localhost:8088/api/v1/user',{ nickName:res.userInfo.nickName,autograph:that.data.autograph },'POST')
                           .then(val => {
@@ -113,7 +114,7 @@ Page({
             autograph:'请先登录哟！',
             starsList:[],
             footMark:[],
-            carts:[]
+            products:[]
           })
           wx.setStorageSync('login', false)
         }
@@ -132,10 +133,10 @@ Page({
       footMark:dataList
     })
   },
-  getCarts(){
-    const dataList = wx.getStorageSync('carts')
+  getProducts(){
+    const dataList = wx.getStorageSync('products')
     this.setData({
-      carts:dataList
+      products:dataList
     })
   },
   handleDel(e){
@@ -172,7 +173,14 @@ Page({
         Notify({ type: 'primary', message: '暂无足迹', duration: 2000 });
       }
     }else{
-      Notify({ type: 'danger', message: '请先登录', duration: 2000 });
+      Notify({ 
+        type: 'danger', 
+        message: '请先登录', 
+        duration: 3000,
+        onClose:() => {
+          this.getUserInfo()
+        } 
+      });
     }
   },
   onClose(e){
@@ -205,6 +213,29 @@ Page({
     })
   },
   /**
+   * 确认收货
+   */
+  submitOrder(e){
+    const that = this
+    Dialog.confirm({
+      message: '确认收货么？',
+    })
+      .then(() => {
+        const products = wx.getStorageSync('products')
+        const arr = []
+        products.forEach(item => arr.push(item._id))
+        const index = arr.findIndex(item => item === e.currentTarget.dataset.id)
+        products.splice(index,1)
+        wx.setStorageSync('products', products)
+        Toast.success('确认收货成功');
+        that.setData({
+          products: products
+        })
+      })
+      .catch(() => {});
+  },
+
+  /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
@@ -232,9 +263,9 @@ Page({
       this.setData({
         footMark:footMark
       })
-      const carts = wx.getStorageSync('carts')
+      const products = wx.getStorageSync('products')
       this.setData({
-        carts:carts
+        products:products
       })
       console.log(this.data.starsList);
     }

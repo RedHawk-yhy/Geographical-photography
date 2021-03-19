@@ -119,7 +119,16 @@ Page({
         Notify({ type: 'primary', message: '暂无搜索记录', duration: 2000 });
       }
     }else{
-      Notify({ type: 'danger', message: '请登录', duration: 2000});
+      Notify({ 
+        type: 'danger', 
+        message: '请登录', 
+        duration: 3000,
+        onClose: () => {
+          wx.switchTab({
+            url: '../home/home',
+          })
+        }
+      });
     }
   },
   picView(e){

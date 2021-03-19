@@ -14,10 +14,11 @@
 </view>
 <van-dialog id="van-dialog" />
 <van-notify id="van-notify" />
+<van-toast id="van-toast" />
 <van-tabs animated swipeable>
-  <van-tab title="购物车" class="title">
-    <view class="container">
-      <view class="item animated fadeInLeftBig" wx:for="{{ carts }}" wx:key="index" data-id="{{ item._id }}" catchtap="goDetail" >
+  <van-tab title="待收货" class="title">
+    <view class="container" wx:if="{{ products.length > 0 }}">
+      <view class="item animated fadeInLeftBig" wx:for="{{ products }}" wx:key="index" data-id="{{ item._id }}" catchtap="goDetail" >
         <image src="{{ item.image }}" mode="widthFix"></image>
         <view class="text">
           <view class="title">{{ item.title }}</view>
@@ -27,11 +28,17 @@
           </view>
           <view class="totalPrice">￥{{ item.totalPrice }}</view>
         </view>
+        <view class="option">
+          <van-button class="optionBtn" color="linear-gradient(to right, #FF6034, #EE0B24)" data-id="{{ item._id }}" size="mini" catchtap="submitOrder">确认收货</van-button>
+        </view>
       </view>
+    </view>
+    <view wx:else>
+      <van-empty description="暂无商品" />
     </view>
   </van-tab>
   <van-tab title="收藏" class="title">
-    <view class="container">
+    <view class="container" wx:if="{{ starsList.length > 0 }}">
       <van-swipe-cell class="touchCell" right-width="{{ 65 }}" wx:for="{{ starsList }}" wx:key="id" data-id="{{ item._id }}" async-close bind:close="onClose">
         <van-cell-group>
           <van-cell>
@@ -46,6 +53,9 @@
         </van-cell-group>
         <view slot="right" class="delete">删除</view>
       </van-swipe-cell>
+    </view>
+    <view wx:else>
+      <van-empty description="暂无收藏" />
     </view>
   </van-tab>
   <van-tab title="足迹" class="title">

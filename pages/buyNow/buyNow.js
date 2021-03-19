@@ -1,6 +1,8 @@
 // pages/buNow/buyNow.js
 const { request } = require('../../utils/request')
-
+import Dialog from '../../miniprogram_npm/@vant/weapp/dialog/dialog'
+import Notify from '../../miniprogram_npm/@vant/weapp/notify/notify';
+import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast';
 Page({
 
   /**
@@ -37,23 +39,31 @@ Page({
     })
   },
   onSubmit(){
-    this.setData({
-      totalPrice:this.data.num * this.data.value.price
+    Dialog.confirm({
+      message: '确认购买么？',
     })
-    const carts = wx.getStorageSync('carts')
-    console.log(carts);
-    const order = this.data.value
-    order.num = this.data.num
-    order.totalPrice = this.data.totalPrice
-    console.log(order);
-    if(carts && carts.length > 0){
-      carts.unshift(order)
-      wx.setStorageSync('carts', carts)
-    }else{
-      const carts = []
-      carts.push(order)
-      wx.setStorageSync('carts', carts)
-    }
+      .then(() => {
+        this.setData({
+          totalPrice:this.data.num * this.data.value.price
+        })
+        const products = wx.getStorageSync('products')
+        console.log(products);
+        const order = this.data.value
+        order.num = this.data.num
+        order.totalPrice = this.data.totalPrice
+        console.log(order);
+        if(products && products.length > 0){
+          products.unshift(order)
+          wx.setStorageSync('products', products)
+          Toast.success('购买成功')
+        }else{
+          const products = []
+          products.push(order)
+          wx.setStorageSync('products', products)
+          Toast.success('购买成功')
+        }
+      })
+      .catch(() => {});
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

@@ -38,7 +38,16 @@ Page({
     if(isLogined){
       this.setData({ showShare: true });
     }else{
-      Notify({ type: 'danger', message: '请先登录', duration: 2000 });
+      Notify({ 
+        type: 'danger', 
+        message: '请先登录', 
+        duration: 3000,
+        onClose:() => {
+          wx.switchTab({
+            url: '../home/home',
+          })
+        }
+      });
     }
     
   },
@@ -49,12 +58,19 @@ Page({
         url: `../buyNow/buyNow?id=${e.currentTarget.dataset.id}`,
       })
     }else{
-      Notify({ type: 'danger', message: '请先登录', duration: 2000 });
+      Notify({ 
+        type: 'danger', 
+        message: '请先登录', 
+        duration: 3000, 
+        onClose:()=>{
+          wx.switchTab({
+            url: '../home/home',
+          })
+        }
+      });
+      
     }
-    
   },
-
- 
 
   // 分享点击事件
   onClose() {

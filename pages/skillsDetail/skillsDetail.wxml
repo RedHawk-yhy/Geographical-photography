@@ -5,7 +5,7 @@
   <view class="content">{{ value.content }}</view>
   <view class="option" wx:if="{{ isLogined }}">
     <van-icon class="star" name="star" catchtap="handleStar" wx:if="{{ checked }}"/>
-    <van-icon class="star" name="star-o" catchtap="handleStar" wx:else />
+    <van-icon class="star-o" name="star-o" catchtap="handleStar" wx:else />
   </view>
   
 </view>

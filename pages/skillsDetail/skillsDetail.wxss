@@ -16,3 +16,6 @@
   font-weight: 300;
   font-size: 30rpx;
 }
+.star{
+  color: #ffd60a;
+}

@@ -70,7 +70,7 @@ Page({
           }
         }
       })
-  },
+  },  
   handleStar(e){
     const { _id } = this.data.value;
     const stars = wx.getStorageSync('stars')

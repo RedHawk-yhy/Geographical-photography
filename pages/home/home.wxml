@@ -18,7 +18,7 @@
 <van-tabs animated swipeable>
   <van-tab title="待收货" class="title">
     <view class="container" wx:if="{{ products.length > 0 }}">
-      <view class="item animated fadeInLeftBig" wx:for="{{ products }}" wx:key="index" data-id="{{ item._id }}" catchtap="goDetail" >
+      <view class="item animated fadeInLeftBig" wx:for="{{ products }}" wx:key="index" data-id="{{ item._id }}">
         <image src="{{ item.image }}" mode="widthFix"></image>
         <view class="text">
           <view class="title">{{ item.title }}</view>
@@ -59,7 +59,7 @@
     </view>
   </van-tab>
   <van-tab title="足迹" class="title">
-    <view class="container">
+    <view class="container" wx:if="{{ footMark.length > 0 }}">
       <van-button type="danger" class="delFootMark" size="mini" bindtap="delFootMark">清空足迹</van-button>
       <view class="item animated fadeInLeftBig" wx:for="{{ footMark }}" wx:key="id" data-id="{{ item._id }}" catchtap="goDetail">
         <image class="image" src="{{ item.image }}" mode="widthFix"></image>
@@ -68,6 +68,9 @@
           <view class="content">{{ item.content }}</view>
         </view>
       </view>
+    </view>
+    <view wx:else>
+      <van-empty description="暂无足迹" />
     </view>
   </van-tab>
 </van-tabs>

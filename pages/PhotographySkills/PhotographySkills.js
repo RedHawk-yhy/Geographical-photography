@@ -16,7 +16,7 @@ Page({
   },
   handleDetail(e){
     wx.navigateTo({
-      url: `../skillsDetail/skillsDetail?id=${ e.target.dataset.id }`,
+      url: `../skillsDetail/skillsDetail?id=${ e.currentTarget.dataset.id }`,
     })
   },
   /**
@@ -24,7 +24,6 @@ Page({
    */
   onLoad: function (options) {
     this.loadData('http://localhost:8088/api/v1/skills',this.data.pagination)
-    console.log(options);
   },
   loadData(url,data){
     request(url,data)

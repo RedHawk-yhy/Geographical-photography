@@ -1,7 +1,7 @@
 <!--pages/home/home.wxml-->
 <view class="userInfo">
   <van-image round width="150rpx" height="150rpx" src="{{userInfo.avatarUrl}}" class="avator" />
-  <text bindtap="getUserInfo" class="{{userInfo?'nickName':'underline nickName'}}" >
+  <text bindtap="getUserProfile" class="{{userInfo?'nickName':'underline nickName'}}" >
     {{userInfo.nickName?userInfo.nickName:"点击获取个人信息"}}
   </text>
   <view class="exits" bindtap="exits"><van-tag type="danger">{{userInfo?"退出":""}}</van-tag></view>

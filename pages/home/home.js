@@ -1,5 +1,7 @@
 // pages/home/home.js
-const { request } = require('../../utils/request')
+const {
+  request
+} = require('../../utils/request')
 import Dialog from '../../miniprogram_npm/@vant/weapp/dialog/dialog'
 import Notify from '../../miniprogram_npm/@vant/weapp/notify/notify';
 import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast';
@@ -11,36 +13,38 @@ Page({
    */
   data: {
     userInfo: null,
-    autograph:'请先登录哟',
-    isAutoGraph:false,
-    autographIpt:'',
-    errorMessage:'',
-    starsList:[],
-    footMark:[],
-    products:[]
+    autograph: '请先登录哟',
+    isAutoGraph: false,
+    autographIpt: '',
+    errorMessage: '',
+    starsList: [],
+    footMark: [],
+    products: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    this.getUserProfile()
   },
-  editAutograph(){
+  editAutograph() {
     this.setData({
-      isAutoGraph:true,
-      autographIpt:this.data.autograph ? this.data.autograph : ''
+      isAutoGraph: true,
+      autographIpt: this.data.autograph ? this.data.autograph : ''
     })
   },
-  getAutographIptValue(){
-    if(this.data.autographIpt === ''){
+  getAutographIptValue() {
+    if (this.data.autographIpt === '') {
       this.setData({
-        errorMessage:'输入内容不能为空！',
-        isAutoGraph:true
+        errorMessage: '输入内容不能为空！',
+        isAutoGraph: true
       })
-    }else{
-      request(`http://localhost:8088/api/v1/user/updateMark?nickName=${ this.data.userInfo.nickName }`,{ autograph:this.data.autographIpt },'POST').then(res => {
-        if(res.data.code === 1){
+    } else {
+      request(`http://localhost:8088/api/v1/user/updateMark?nickName=${ this.data.userInfo.nickName }`, {
+        autograph: this.data.autographIpt
+      }, 'POST').then(res => {
+        if (res.data.code === 1) {
           wx.showToast({
             title: res.data.msg,
             icon: 'success',
@@ -49,55 +53,43 @@ Page({
         }
       })
       this.setData({
-        autograph:this.data.autographIpt
+        autograph: this.data.autographIpt
       })
     }
-    
+
   },
   //  获取用户信息方法
-  getUserInfo() {
+  getUserProfile() {
     if (!this.data.userInfo) {
       const that = this
-      wx.showModal({
-        title: '地理摄影想要获取您的信息',
-        content: '头像和昵称',
-        success(res) {
-          if (res.confirm) {
-            wx.getSetting({
-              success: res => {
-                if (res.authSetting['scope.userInfo']) {
-                  // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
-                  wx.getUserInfo({
-                    success: res => {
-                      wx.setStorageSync('login', true)
-                      request('http://localhost:8088/api/v1/user').then((result) => {
-                        const thisUser = result.data.find(item => res.userInfo.nickName === item.nickName)
-                        that.setData({
-                          autograph:thisUser.autograph
-                        })
-                        const arr = []
-                        result.data.forEach(item =>{
-                          arr.push(item.nickName)
-                        })
-                        that.getStars()
-                        that.getfootMark()
-                        that.getProducts()
-                        if(arr.indexOf(res.userInfo.nickName) === -1){
-                          request('http://localhost:8088/api/v1/user',{ nickName:res.userInfo.nickName,autograph:that.data.autograph },'POST')
-                          .then(val => {
-                            
-                          })
-                        }
-                      })
-                      that.setData({
-                        userInfo: res.userInfo
-                      })
-                    }
-                  })
-                }
-              }
-            })
-          }
+      wx.getUserProfile({
+        desc: '用于使用更多功能', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
+        success: (res) => {
+          this.setData({
+            userInfo: res.userInfo,
+          })
+          wx.setStorageSync('login', true)
+          request('http://localhost:8088/api/v1/user').then((result) => {
+            const thisUser = result.data.find(item => res.userInfo.nickName === item.nickName)
+            if (thisUser) {
+              that.setData({
+                autograph: thisUser.autograph
+              })
+            }
+            const arr = result.data.map(item => item.nickName)
+            that.getStars()
+            that.getfootMark()
+            that.getProducts()
+            if (arr.indexOf(res.userInfo.nickName) === -1) {
+              request('http://localhost:8088/api/v1/user', {
+                  nickName: res.userInfo.nickName,
+                  autograph: that.data.autograph
+                }, 'POST')
+                .then(val => {
+                  console.log(val.data.msg);
+                })
+            }
+          })
         }
       })
     }
@@ -111,80 +103,87 @@ Page({
         if (res.confirm) {
           that.setData({
             userInfo: null,
-            autograph:'请先登录哟！',
-            starsList:[],
-            footMark:[],
-            products:[]
+            autograph: '请先登录哟！',
+            starsList: [],
+            footMark: [],
+            products: []
           })
           wx.setStorageSync('login', false)
         }
       }
     })
   },
-  getStars(){
+  getStars() {
     const dataList = wx.getStorageSync('stars')
     this.setData({
-      starsList:dataList
+      starsList: dataList
     })
   },
-  getfootMark(){
+  getfootMark() {
     const dataList = wx.getStorageSync('footMark')
     this.setData({
-      footMark:dataList
+      footMark: dataList
     })
   },
-  getProducts(){
+  getProducts() {
     const dataList = wx.getStorageSync('products')
     this.setData({
-      products:dataList
+      products: dataList
     })
   },
-  handleDel(e){
+  handleDel(e) {
     Dialog.confirm({
       // title: '标题',
       message: '您确定要取消收藏么？',
-    }).then(()=>{
+    }).then(() => {
       const stars = wx.getStorageSync('stars')
       const index = stars.findIndex(item => item._id === e.target.dataset.id)
-      stars.splice(index,1)
+      stars.splice(index, 1)
       wx.setStorageSync('stars', stars)
       this.setData({
-        starsList:stars
+        starsList: stars
       })
-    }).catch(()=>{
-      
+    }).catch(() => {
+
     })
   },
-  delFootMark(){
+  delFootMark() {
     const that = this
     const isLogined = wx.getStorageSync('login')
-    if(isLogined){
+    if (isLogined) {
       const footMark = wx.getStorageSync('footMark')
-      if(footMark && footMark.length > 0){
+      if (footMark && footMark.length > 0) {
         Dialog.confirm({
           message: '您确定要清空足迹么？'
         }).then(() => {
           wx.setStorageSync('footMark', [])
           that.setData({
-            footMark:[]
+            footMark: []
           })
-        }).catch(()=>{})
-      }else{
-        Notify({ type: 'primary', message: '暂无足迹', duration: 2000 });
+        }).catch(() => {})
+      } else {
+        Notify({
+          type: 'primary',
+          message: '暂无足迹',
+          duration: 2000
+        });
       }
-    }else{
-      Notify({ 
-        type: 'danger', 
-        message: '请先登录', 
+    } else {
+      Notify({
+        type: 'danger',
+        message: '请先登录',
         duration: 3000,
-        onClose:() => {
-          this.getUserInfo()
-        } 
+        onClose: () => {
+          this.getUserProfile()
+        }
       });
     }
   },
-  onClose(e){
-    const { position, instance } = e.detail;
+  onClose(e) {
+    const {
+      position,
+      instance
+    } = e.detail;
     switch (position) {
       case 'cell':
         instance.close();
@@ -195,19 +194,19 @@ Page({
         }).then(() => {
           const stars = wx.getStorageSync('stars')
           const index = stars.findIndex(item => item._id === e.currentTarget.dataset.id)
-          stars.splice(index,1)
+          stars.splice(index, 1)
           wx.setStorageSync('stars', stars)
           this.setData({
-            starsList:stars
+            starsList: stars
           })
           instance.close();
-        }).catch(()=>{
+        }).catch(() => {
           instance.close()
         })
         break;
     }
   },
-  goDetail(e){
+  goDetail(e) {
     wx.navigateTo({
       url: `../skillsDetail/skillsDetail?id=${ e.currentTarget.dataset.id }`,
     })
@@ -215,17 +214,17 @@ Page({
   /**
    * 确认收货
    */
-  submitOrder(e){
+  submitOrder(e) {
     const that = this
     Dialog.confirm({
-      message: '确认收货么？',
-    })
+        message: '确认收货么？',
+      })
       .then(() => {
         const products = wx.getStorageSync('products')
         const arr = []
         products.forEach(item => arr.push(item._id))
         const index = arr.findIndex(item => item === e.currentTarget.dataset.id)
-        products.splice(index,1)
+        products.splice(index, 1)
         wx.setStorageSync('products', products)
         Toast.success('确认收货成功');
         that.setData({
@@ -234,7 +233,7 @@ Page({
       })
       .catch(() => {});
   },
-  switchToCart(){
+  switchToCart() {
     wx.navigateTo({
       url: '../cart/cart',
     })
@@ -251,29 +250,25 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    const that = this
-    wx.getSetting({
-      success(res){
-        if(res.authSetting['scope.userInfo']){
-          that.getUserInfo()
-        }
-      }
-    })
-    if(this.data.userInfo){
+    const isLogined = wx.getStorageSync('login')
+    if(!isLogined){
+      this.getUserProfile()
+    }
+    if (this.data.userInfo) {
       const stars = wx.getStorageSync('stars')
       this.setData({
-        starsList:stars
+        starsList: stars
       })
       const footMark = wx.getStorageSync('footMark')
       this.setData({
-        footMark:footMark
+        footMark: footMark
       })
       const products = wx.getStorageSync('products')
       this.setData({
-        products:products
+        products: products
       })
     }
-    
+
     this.getTabBar().init()
   },
 

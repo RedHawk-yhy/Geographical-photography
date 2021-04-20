@@ -1,5 +1,6 @@
 // pages/awardedWork/awardedWork.js
 const awardList = require('../../utils/award')
+const { request } = require('../../utils/request')
 Page({
 
   /**
@@ -13,23 +14,31 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.getHtmlData()
+  },
+  getHtmlData(){
     
+    request('http://localhost:8088/public/award.json').then(res => {
+      this.setData({
+        htmlData:res.data[0].html
+      })
+    })
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.setData({
-      htmlData:awardList[0].html
-    })
+    // this.setData({
+    //   htmlData:awardList[0].html
+    // })
   },
 
   /**

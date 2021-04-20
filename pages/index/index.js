@@ -5,8 +5,8 @@ import Dialog from '../../miniprogram_npm/@vant/weapp/dialog/dialog'
 import Notify from '../../miniprogram_npm/@vant/weapp/notify/notify';
 Page({
   data: {
-    banners: ["https://s3.ax1x.com/2021/02/08/yNjDFH.jpg", "https://s3.ax1x.com/2021/02/08/yNj0Te.jpg",
-      "https://s3.ax1x.com/2021/02/08/yNjwwD.jpg", "https://s3.ax1x.com/2021/02/08/yNjdeO.jpg"
+    banners: ["http://localhost:8088/public/banner1.jpg", "http://localhost:8088/public/banner2.jpg",
+      "http://localhost:8088/public/banner3.jpg", "http://localhost:8088/public/banner4.jpg"
     ],
     value:'',
     daily:[],
